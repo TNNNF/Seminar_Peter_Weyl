@@ -47,10 +47,13 @@ Darstellungstheorie topologischer Gruppen.
 \chapter{Grundlagen der Darstellungstheorie}
 Ziel der Darstellungstheorie ist es gewissermaßen, das 
 Problem der schwierigen Strukturierung von Gruppen zu
-lösen, indem man die Elemente in Matrizen übersetzt.
-Für diese kennen wir nämlich aus der linearen Algebra viele
-hilfreiche Sätze, mit denen wir sehr häufig mehr über die
-Struktur der Gruppe verstehen können.
+lösen, indem man die Elemente in lineare Operatoren 
+übersetzt.
+Für diese kennen wir nämlich aus der linearen Algebra im 
+endlichdimensionalen sowie der Funktionalanalysis um 
+unendlichdimensionalen Fall viele hilfreiche Sätze, mit 
+denen wir sehr häufig mehr über die Struktur der Gruppe 
+verstehen können.
 \section{Grundlegende Begriffe}
 Der zentrale Begriff in der Darstellungstheorie 
 topologischer Gruppen ist der einer Darstellung.
@@ -64,9 +67,9 @@ $ \pi: G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
 (g,v)\mapsto (g,v)\mapsto \pi(g)v$$ stetig ist.
 \end{definition}
 \begin{beispiel}
-Für $G=\SL_2(\R)$ erhalten wir folgende 
-Standarddarstellung auf $V= \C^2$ gegeben durch $\pi: 
-\SL(2,\R)\to \GL(\C^2), A\mapsto A$ und mit 
+Für $G=\SL(2, \R)$ erhalten wir folgende 
+Standarddarstellung auf $V= \R^2$ gegeben durch $\pi: 
+\SL(2,\R)\to \GL(\R^2), A\mapsto A$ mit 
 Matrixmultiplikation als zugehöriger Wirkung.
 \end{beispiel}
 Bereits aus der Algebra 1 wissen wir um die Wichtigkeit 
@@ -129,6 +132,7 @@ Darstellungen, die wie üblich über Abbildungen gegeben sind.
             V_ \pi$ gibt.
     \end{enumerate}
 \end{definition}
+\section{Lemma von Schur}
 Wie man sich schon vorstellen kann, ist die Theorie
 irreduzibler Darstellungen sehr überschaubar. Ein
 zentrales Resultat dieser ist das sogenannte Lemma
@@ -292,5 +296,119 @@ $T\neq 0$ folgt also, dass $S \circ T^{-1} \in \Hom_G(V_
 ein $ \lambda \in\C$. Somit $S = \lambda T$. Dies zeigt
 die Eindimensionalität.
 \end{proof}
+\section{Kompakte Gruppen}
+Das Lemma von Schur liefert uns schon eine gute
+Charakterisierung irreduzibler Darstellungen. Jedoch
+interessieren uns auch nicht notwendigerweise irreduzible
+Darstellungen. Diese können im Allgemeinen etwas
+unübersichtlicher werden. Für kompakte Gruppen wird die 
+Situation jedoch recht überschaubar und hier wird uns das
+erste Mal die Integration bezüglich des Haarmaßes gute 
+Dienste erweisen. \\
+Zuerst beginnen wir damit, die endlichdimensionalen 
+Darstellungen genauer zu studieren. Dies wirkt zuerst stark
+einschränkend, jedoch werden wir sehen, dass auf einer 
+kompakten Gruppe dies tatsächlich schon alle Darstellungen
+sind.\\
+Bevor wir damit jedoch starten können, müssen wir zumindest
+kurz über die Haarmaße auf kompakten Gruppen reden. A
+priori ist nämlich nicht klar, ob es einen Unterschied 
+zwischen linken und rechten Haarmaßen gibt oder nicht.
+Dazu brauchen wir einige Hilfsmittel.
+\begin{definition}[modulare Funktion, unimodulare Gruppen]
+    Sei $G$ eine lokalkompakte Gruppe und $ \mu$ ein
+    Haarmaß auf $G$. Für $x \in G$ definieren wir das Maß
+    $ \mu_x$ durch $ \mu_x(A) = \mu(Ax)$, wobei es sich
+    ebenfalls um ein Haarmaß handelt. Somit gibt es durch
+    die Eindeutigkeit des Haarmaßes eine Zahl $\Delta(x)>0$,
+    mit $ \mu_x = \Delta(x) \mu$. Dies definiert eine 
+    Abbildung $ \Delta: G\to \R_{>0}$, welche die
+    \underline{modulare Funktion}\index{modulare Funktion}
+    der Gruppe $G$ genannt wird.\\
+    Wenn $ \Delta \equiv 1$, dann heißt $G$ eine
+    \underline{unimodulare Gruppe}\index{unimodulare Gruppe}
+    .
+\end{definition}
+\begin{bemerkung}
+Für unimodulare Gruppen stimmen linke und rechte Haarmaße
+überein.
+\end{bemerkung}
+Damit wir uns keine Gedanken über das Maß machen müssen,
+wollen wir zeigen, dass kompakte Gruppen unimodular sind.
+\begin{satz}\label{thm:propsModularFunction}
+Sei $G$ eine lokalkompakte Gruppe mit modularer Funktion
+$ \Delta: G\to \R^\times_{>0}$. Dann gelten folgende 
+Eigenschaften:
+\begin{enumerate}
+    \item Für $ y \in G$ und $ f \in \LL^1(G)$ ist
+        $R_y f \in \LL^1(G)$ und es gilt
+        $$ \int_{G} R_y f(x) \,\diff x = \int_{G} f(xy) 
+        \,\diff x = \Delta( y^{-1}) \int_{G} f(x) 
+        \,\diff x,$$
+        wobei $R_yf: G\to \R, x \mapsto f(xy)$.
+    \item $ \Delta$ ist ein stetiger Gruppenhomomorphismus.
+    \item Kompakte Gruppen sind unimodular.
+\end{enumerate}
+\end{satz}
+\begin{proof}
+    \begin{enumerate}
+        \item Für charakteristische Funktionen 
+            $\mathds{1}_A$ gilt:
+            \begin{align*}
+                \int_{_G} \mathds{1}_A(xy) \,\diff x &=
+                \int_{A} xy \,\diff x \\
+                &= \int_{Ay^{-1}} x \,\diff  x\\
+                &= \mu(A y^{-1})\\
+                &= \Delta( y^{-1}) \mu(A)\\
+                &= \Delta( y^{-1}) \int_{G} \mathds{1}_A(x)
+                \,\diff x.
+            \end{align*}
+            Für beliebige integrierbare Funktionen folgt die
+            Aussage mit maßtheoretischer Induktion.
+        \item Für $x,y \in G$ und eine messbare Menge
+            $A \subseteq G$ gilt
+            \begin{align*}
+                \Delta(xy) \mu(A) &= \mu_{xy}(A) \\
+                                  &= \mu(Axy)\\
+                                  &= \mu_y(Ax)\\
+                                  &= \Delta(y) \mu(Ax)\\
+                                  &= \Delta(y) \Delta(x) 
+                                  \mu(A).
+            \end{align*}
+            Durch Wahl einer beliebigen Menge $A$ mit
+            $ 0 < \mu(A) < \infty$ gilt dann
+            $$ \Delta(xy) = \Delta(x) \Delta(y).$$
+            Zur Stetigkeit in $y$ wähle eine Funktion
+            $f \in C_c(G)$ mit $ c = \int_{G} f(x)  \,\diff
+            x > \neq 0$. Dann folgt durch den ersten Teil
+            der Aussage 
+            $$ \Delta(y) = \frac{1}{c} \int_{G} f(x y^{-1}) 
+            \,\diff x  = \frac{1}{c} \int_{G} R_{ y^{-1}} 
+            f(x) \,\diff  x.$$
+            Dieser Ausdruck ist stetig in $y$, weswegen auch
+            $ \Delta$ stetig in $y$ sein muss.
+        \item Sei nun $G$ kompakt. Da $ \Delta$ ein
+            stetiger Gruppenhomomorphismus ist, muss
+            $ \Delta(G)$ eine kompakte Untergruppe von
+            $ \R_{>0}^\times$ sein. Die einzige kompakte
+            Untergruppe dieser Gruppe ist jedoch $ \{ 1 \}$.
+    \end{enumerate} 
+\end{proof}
+Dass wir nicht zwischen linken und rechten Haarmaßen
+unterscheiden müssen, erleichtert die Situation erheblich,
+weswegen wir uns nun den endlichdimensionalen Darstellungen
+widmen können. Sei also im Folgenden stets $G$ eine kompakte
+(also insbesondere lokalkompakte) topologische Gruppe sowie
+$ (\rho, V)$ eine endlichdimensionale Darstellung, sofern
+nicht anders gefordert.
+\begin{lemma}
+\label{lem:finiteDimensionalRepresentationsAlwaysUnitary}
+Auf $V$ gibt es stets ein Skalarprodukt, sodass $ \rho$
+eine unitäre Darstellung wird. Falls $ \rho$ irreduzibel
+ist, dann ist dieses Skalarprodukt eindeutig bis auf
+eine positive Konstante bestimmt.
+\end{lemma}
+Dies erlaubt es uns also, endlichdimensionale Darstellungen
+immer als unitäre Darstellungen aufzufassen.
 \printindex
 \end{document}
