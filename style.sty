@@ -1,0 +1,115 @@
+\ProvidesPackage{style}
+
+% Pakete
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage[left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+\RequirePackage{amsthm}
+\RequirePackage{xcolor}
+\RequirePackage{mathtools}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{palatino}
+\RequirePackage{titlesec}
+\RequirePackage{microtype}
+\RequirePackage{derivative}
+\RequirePackage{tikz}
+\RequirePackage[ngerman]{babel}
+\RequirePackage{fancyhdr}
+\RequirePackage{makeidx}
+\RequirePackage{imakeidx}
+\RequirePackage{csquotes}
+\RequirePackage{hyperref}
+
+\makeindex
+\setlength{\parindent}{0pt}
+\MakeOuterQuote{"}
+
+% Definitionen von Befehlen
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+\newcommand{\chapnumfont}{\color{white}\bfseries\fontsize{16pt}{0pt}\selectfont}
+\newcommand{\interior}[1]{\mathring{#1}}
+\newcommand{\closure}[1]{\bar{#1}}
+\newcommand{\exterior}[1]{\partial #1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\GLS}[1]{\GL_{\mathrm{cont}}(#1)}
+% Definition von amsthm-Styles
+\newtheoremstyle{satz}
+{3pt}
+{3pt}
+{\normalfont}
+{}
+{\bfseries}
+{.}
+{ }
+{}
+
+% Definition von amsthm-Umgebungen
+\theoremstyle{satz} %
+\newtheorem{satz}{Satz}[section]
+\newtheorem{lemma}[satz]{Lemma}
+\newtheorem{korollar}[satz]{Korollar}
+\newtheorem{proposition}[satz]{Proposition}
+\newtheorem{sol}{Lösung}
+\newtheorem*{satz*}{Satz}
+
+\theoremstyle{definition}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{beispiel}{Beispiel}
+\newtheorem{bemerkung}{Bemerkung}
+
+
+% Definition von Mathe-Symbolen
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\LL}{L}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\gl}{\frak{gl}}
+
+% Befehle neu definieren
+\renewcommand{\thesection}{\arabic{section}}
+
+% Layout
+\pagestyle{fancy}
+\titleformat{\chapter}{\normalfont\scshape\Large}{\thechapter.}{0.5em}{\centering\textls[150]}[\vspace{0.5em}\centering\rule{0.5\textwidth}{0.4pt}\vspace{0.8em}]
+\titleformat{\section}{\normalfont\scshape\Large}{\thechapter.\thesection}{0.5em}{\textls[100]}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[OR]{\rightmark}
+\fancyhead[L]{\leftmark}
+
+\fancypagestyle{chapterbegin}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\makeatletter
+\pretocmd{\@chapter}{\thispagestyle{chapterbegin}}{}{}
+\makeatother

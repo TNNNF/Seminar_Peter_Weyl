@@ -1,0 +1,296 @@
+\documentclass{report}
+
+\usepackage{style}
+
+\begin{document}
+\tableofcontents
+\chapter{Einführung}
+\section{Motivation}
+Das zentrale Ergebnis des letzten Vortrags war die Existenz
+und Eindeutigkeit des Haarmaßes, welche sich im folgenden
+Satz zusammenfassen lässt.
+\begin{satz*}[Existenz und Eindeutigkeit des Haarmaßes]
+    Sei $G$ eine lokalkompakte Gruppe. Dann gibt es eine 
+    linksinvariantes Radonmaß $ \mu\neq 0$ auf 
+    $\mathcal{B}(X)$. Dieses ist eindeutig bis auf 
+    positive Vielfache.
+\end{satz*}
+Dieses Maß wird als das Haarmaß bezeichnet. Somit erhalten
+wir auf jeder Gruppe einen sinnvollen Begriff des Integrals.
+Dies erlaubt uns, wirklich sinnvoll über Räume wie 
+$\LL^2(G)$ zu reden.\\
+Im Spezialfall erhalten wir dann natürlich Ergebnisse für
+die Integrationstheorie auf dem $\R^d$ oder anderen 
+spannenden Gruppen wie $\R^\times$. Jedoch sind nicht alle
+Gruppen so gut strukturiert wie diese Gruppen. Diese sind
+nämlich abelsch und lokalkompakt. Die Integrationstheorie
+auf solchen Gruppen ist zentraler Gegenstand der 
+\emph{harmonischen Analysis}. Der nicht abelsche Fall ist
+jedoch nicht so gut strukturiert und deutlich 
+unübersichtlicher. Für den kompakten Fall erhalten wir 
+jedoch den \emph{Satz von Peter-Weyl}, welcher viele 
+Informationen über die Struktur von $\LL^2(G)$ beinhaltet.
+Diesen zu verstehen und zu beweisen ist Gegenstand des 
+vorliegenden Seminarvortrags.\\
+Zunächst brauchen wir jedoch noch Grundlagen der
+Darstellungstheorie topologischer Gruppen.
+\section{Notation}
+\begin{itemize}
+    \item Für einen Banachraum $V$ bezeichnen wir mit 
+        $\GLS{V}$ die Menge der stetigen, linearen, 
+        invertierbaren Abbildungen.
+    \item Für zwei Banachräume $V, W$ bezeichnen wir mit
+        $ \mathcal L(V, W)$ die Menge der beschränkten,
+        stetigen linearen Abbildungen $T:V\to W$.
+\end{itemize}
+
+\chapter{Grundlagen der Darstellungstheorie}
+Ziel der Darstellungstheorie ist es gewissermaßen, das 
+Problem der schwierigen Strukturierung von Gruppen zu
+lösen, indem man die Elemente in Matrizen übersetzt.
+Für diese kennen wir nämlich aus der linearen Algebra viele
+hilfreiche Sätze, mit denen wir sehr häufig mehr über die
+Struktur der Gruppe verstehen können.
+\section{Grundlegende Begriffe}
+Der zentrale Begriff in der Darstellungstheorie 
+topologischer Gruppen ist der einer Darstellung.
+\begin{definition}[Darstellung]
+Sei $V$ ein Banachraum und $G$ eine topologische Gruppe. 
+Eine \underline{Banachraum-Darstellung}
+\index{Banachraum-Darstellung}\footnote{Häufig werden wir 
+nur Darstellung sagen und damit eine Banachraum-Darstellung 
+meinen.} von $G$ auf $V$ ist ein Gruppenhomomorphismus 
+$ \pi: G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
+(g,v)\mapsto (g,v)\mapsto \pi(g)v$$ stetig ist.
+\end{definition}
+\begin{beispiel}
+Für $G=\SL_2(\R)$ erhalten wir folgende 
+Standarddarstellung auf $V= \C^2$ gegeben durch $\pi: 
+\SL(2,\R)\to \GL(\C^2), A\mapsto A$ und mit 
+Matrixmultiplikation als zugehöriger Wirkung.
+\end{beispiel}
+Bereits aus der Algebra 1 wissen wir um die Wichtigkeit 
+bestimmter "elementarer" Strukturen, z.B. den zyklischen
+Gruppen bei der Klassifikation endlicher abelscher Gruppen.
+Auch in der Darstellungstheorie gibt es einen ähnlichen
+Begriff:
+\begin{definition}[Unterdarstellungen, irreduzible 
+    Darstellungen]
+Sei $( \rho, V_ \rho)$ eine Darstellung einer topologischen
+    Gruppe $G$. \begin{enumerate}
+    \item $( \pi, V_ \pi)$ heißt \underline{
+        Unterdarstellung}\index{Unterdarstellung} von 
+        $ ( \rho, V_ \rho)$, falls $ V_ \pi$ ein 
+        abgeschlossener Untervektorraum von $ V_ \rho$
+        ist und $ \rho$ eingeschränkt auf $ V_ \pi$
+        gleich $ \pi$ ist.
+    \item $( \rho, V_ \rho)$ heißt \underline{irreduzibel}
+        \index{irreduzibel}, falls es keine nicht-trivialen
+        Unterdarstellungen gibt, also falls für jede 
+        Unterdarstellung $( \pi, V_ \pi)$ gilt, dass
+        $V_ \pi = \{0\}$ oder $ V_ \pi = V_ \rho$.
+\end{enumerate}
+\end{definition}
+\begin{bemerkung}
+Jeder abgeschlossene Untervektorraum $U \subseteq V_ \rho$, 
+für den $ \rho(G) U \subseteq U$ gilt, liefert eine 
+Unterdarstellung durch Einschränken von $ \rho$ auf $ U$.
+\end{bemerkung}
+Für den Fall, dass die Banachräume $V$ für unsere 
+Darstellungen sogar Hilberträume sind, gibt es noch
+eine weitere Art von Darstellungen:
+\begin{definition}[Unitäre Darstellungen]
+Sei $V$ ein Hilbertraum und $G$ eine topologische Gruppe.
+Eine Darstellung $ \rho$ auf $ V$ heißt \underline{unitäre 
+Darstellung}\index{unitäre Darstellung}, falls 
+$ \rho(g)$ unitär ist für alle $g \in G$, also
+$ \langle \rho(g)v, \rho(g)w \rangle = \langle v, w\rangle$
+für alle $ g \in G$ und alle $ v,w \in V$.
+\end{definition}
+Besonders relevant werden auch Beziehungen zwischen
+Darstellungen, die wie üblich über Abbildungen gegeben sind.
+\begin{definition}[ $G$-Homomorphismen, Äquivalenz von 
+    Darstellungen]
+    Seien $( \rho, V_ \rho), ( \pi, V_ \pi)$ zwei
+    Darstellungen von $G$.
+    \begin{enumerate}
+        \item Ein stetiger, linearer Operator $T: V_ \rho 
+            \to V_ \pi$ heißt \underline{$G$-Homomorphismus}
+            \index{$G$-Homomorphismus}, falls
+            $$ T \circ \rho(g) = \pi(g) \circ T$$
+            für alle $ g \in G$ gilt.
+        \item Die Menge aller $G$-Homomorphismen von 
+            $V_ \rho$ nach $ V_ \pi$ bezeichnen wir mit
+            $\Hom_G(V_ \rho, V_ \pi)$.
+        \item Falls $ \rho$ und $ \pi$ unitäre Darstellungen
+            sind, heißen diese \underline{unitär äquivalent}
+            \index{unitär äquivalent}, falls es einen
+            unitären $G$-\\Homomorphismus $T: V_ \rho\to 
+            V_ \pi$ gibt.
+    \end{enumerate}
+\end{definition}
+Wie man sich schon vorstellen kann, ist die Theorie
+irreduzibler Darstellungen sehr überschaubar. Ein
+zentrales Resultat dieser ist das sogenannte Lemma
+von Schur:
+\begin{lemma}[Schur]\label{lem:Schur}
+Seien $( \rho, V_ \rho)$ eine unitäre Darstellung einer 
+topologischen Gruppe $G$. Dann sind äquivalent:
+\begin{enumerate}
+    \item $ \rho$ ist irreduzibel.
+    \item Falls $T \in \Hom_G( V_ \rho, V_ \rho)$, dann
+        gilt $ T \in \C \id$.
+\end{enumerate}
+\end{lemma}
+Für den Beweis dieses Lemma brauchen wir noch ein wenig 
+Vorarbeit aus der Funktionalanalysis:
+\begin{lemma}\label{lem:topologicalSchur}
+Sei $H$ ein Hilbertraum und $A \subseteq \mathcal L(H)$ eine
+Menge beschränkter Operatoren auf $H$, sodass für alle $S 
+\in A$ auch $S^* \in A$ gilt. Dann sind äquivalent:
+\begin{enumerate}
+    \item Die einzige $A$-invariante, abgeschlossene Menge
+        ungleich $ \{ 0 \} $ ist $ V$.
+    \item Falls $T \in \mathcal L(H)$ mit allen $S \in A$
+        kommutiert, dann ist $T = \lambda \id_V$ für
+        ein $ \lambda \in \C$.
+\end{enumerate}
+
+\end{lemma}
+\begin{proof}
+Angenommen, (2) gilt. Dann sei $ \{ 0 \} \neq L \subseteq H$
+ein abgeschlossener, $A$-invarianter Unterraum von $H$. Dann
+ist auch $ L^\perp$ ein $A$-invarianter, abgeschlossener 
+Untervektorraum, denn für alle $T \in A$, $x \in L^\perp$
+und $y \in L$ gilt
+$$ \langle Tx, y\rangle = \langle x, T^*y \rangle.$$
+Da $T^* \in A$, folgt $T^* y \in L$. Somit gilt auch 
+$$\langle x, T^*y \rangle = 0.$$
+Da die gewählten Elemente beliebig waren, folgt $Tx \in 
+L^\perp$ und somit ist $L^\perp$ ein $A$-invarianter,
+abgeschlossener Untervektorraum. Dann betrachten wir
+die orthogonale Projektion auf $L$ $P_L: H\to L$. Aus
+obiger Rechnung sehen wir direkt mittels $H = L\oplus 
+L^\perp$, dass diese mit allen $T \in A$ kommutiert.
+Unter Ausnutzung von (2) erhalten wir also, dass 
+$P_L = \id$ (da Projektionen Operatornorm 1 haben) gilt.
+Somit muss $L= H$ gelten.\\
+Angeommen (1) gilt. Sei also $T \in \mathcal L(H)$ ein 
+Operator, der mit $A$ kommutiert. Dann kommutiert auch $T^*$
+mit $A$, denn für $S \in A$ ist $S^* \in A$ ud somit
+\begin{align*}
+    \langle S T^* x, y\rangle &= \langle T^* x, S^* y
+    \rangle\\
+                                   &= \langle x, T S^*
+                                      y\rangle\\
+                                   &= \langle x, S^*T
+                                   \rangle \\
+                                   &= \langle T^* Sx, y
+                                   \rangle,
+\end{align*}
+da $S^* \in A$. Da die Matrixkoeffizienten übereinstimmen,
+folgt $S T^* = T^* S$. Indem wir $T= \frac{1}{2}(T+T^*) -
+\frac{1}{2}i(iT - iT^*)$ betrachten, können wir ohne
+Einschränkung annehmen, dass $T$ selbstadjungiert ist.
+Da die Aussage für $T=0$ mit $ \lambda = 0$ klar ist,
+können wir zudem $T\neq 0$ annehmen. Wir zeigen, dass
+das Spektrum von $T$ aus einem einzigen Punkt
+besteht. \\
+Angenommen, es gibt $x\neq y \in \sigma(T)$. Dann gibt
+es zwei Funktionen $f,g\in C( \sigma(T))$ mit
+$f(x)\neq 0 \neq g(y)$ und $f\cdot g = 0$. Dann betrachten
+wir das stetige Funktionalkalkül $f(T)$ und $g(T)$ und 
+erinnern uns daran, dass jeder Operator $S$, der mit $T$ 
+kommutiert, auch mit $f(T)$ kommutiert für 
+$f\in C(\sigma(T))$.
+Dann ist $f(T)\neq 0 \neq g(T)$ und $f\cdot g (T) = 0$,
+da das holomorphe Funktionalkalkül multiplikativ ist.\\
+Da $g(T)$ mit $A$ kommutiert, ist $L = \closure{g(T)H}$
+ein $A$-invarianer Untervektorraum von $H$ ungleich dem 
+Nullraum. Aus Anwendung von (1) erhalten wir, dass $L=H$.
+Aber es gilt gleichzeitig auch, dass $ \{ 0 \} \neq f(T)H
+= f(T) L \subseteq \closure{f(T) g(T) H} = \{ 0 \} $,
+was einen Widerspruch darstellt. Somit muss das Spektrum
+einelementig sein.
+\end{proof}
+Zusätzlich brauchen wir noch ein kleines Lemma, um ein
+wenig mehr über unitäre Darstellungen zu erfahren.
+\begin{lemma}\label{lem:unitaryReprMapsInversesToAdjoints}
+Sei $( \rho, V)$ eine Darstellung. Dann sind äquivalent:
+\begin{enumerate}
+    \item $ \rho$ ist unitär.
+    \item $ \rho( g^{-1}) = \rho(g)^*$ für alle $g \in G$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \rho \text{ ist unitär} &\iff \rho(g)^* \text{ 
+        unitär }\forall g \in G\\
+                                &\iff \rho(g)^{-1} = 
+                                \rho(g)^* \forall g \in G\\
+                                &\iff \rho( g^{-1}) = 
+                                \rho(g)^* \forall g \in G,
+    \end{align*}
+    wobei im letzten Schritt verwendet wurde, dass $ \rho$
+    ein Gruppenhomomorphismus ist.
+\end{proof}
+Nun können wir das Lemma \hyperref[lem:Schur]{Lemma von Schur} 
+beweisen, welches mehr oder weniger ein direktes Korollar 
+aus den obigen Lemmata \ref{lem:topologicalSchur} und
+\ref{lem:unitaryReprMapsInversesToAdjoints} ist.
+\begin{proof}[Beweis (Schur)]
+    Nach Lemma \ref{lem:unitaryReprMapsInversesToAdjoints}
+    ist $ A\coloneq\{ \rho(g): g \in G \} $ eine Menge, 
+    für die $ S \in A \iff S^* \in A$ gilt. Daher können
+    wir Lemma \ref{lem:topologicalSchur} anwenden und 
+    erhalten die gewünschte Aussage.
+\end{proof}
+Während das Lemma von Schur im ersten Moment so wirkt,
+als könne man damit nur die Homomorphismen einer Darstellung
+auf sich selbst klassifizieren, liefert es auch viele
+Informationen für die Homomorphismen zwischen beliebigen
+irreduziblen Darstellungen.
+\begin{korollar}
+Seien $( \rho, V_ \rho), ( \pi, V_ \pi)$ zwei irreduzible,
+unitäre Darstellungen. Dann gilt für einen $G$-
+Homomorphismus $T: V_ \rho\to V_ \pi$, dass $T=0$ oder dass
+$T$ invertierbar mit stetiger Umkehrabbildung ist. In diesem
+Fall existiert ein $c>0$, sodass $ cT$ unitär ist. Dies
+zeigt insbesondere, dass $\Hom_G(V_ \rho, V_ \pi) = \{ 0 \}$
+gilt, außer $ \rho$ und $ \pi$ sind unitär äquivalent.
+In diesem Fall ist $\dim(\Hom_G( V_ \rho, V_ \pi)) = 1$-
+\end{korollar}
+\begin{proof}
+Sei $T: V_ \rho \to V_ \pi$ ein $G$-Homomorphismus. 
+Betrachte $T^*: V_ \pi \to V_ \rho$. Diese Abbildung ist
+ebenfalls ein $G$-Homomorphismus wie folgende Rechnung
+zeigt:
+\begin{align*}
+    \langle \rho(g) T^* x, y \rangle &= \langle T^*x, 
+    \rho(g)^* y \rangle\\ 
+                                     &= \langle x, T \rho( 
+                                     g^{-1}) y \rangle \\
+                                     &= \langle x, 
+                                 \pi(g^{-1})Ty\rangle\\
+                                     &= \langle \pi(g)x, 
+                                     Ty \rangle \\
+                                     &= \langle T^* \pi(g)x
+                                     ,y \rangle, 
+\end{align*}
+für alle $g \in G, x,y \in H$. Damit ist $T^* T \in 
+\Hom_G(V_ \rho, V_ \rho)$. Aus dem \hyperref[lem:Schur]{
+Lemma von Schur} folgt, dass $T^* T = \lambda \id$ für
+ein $ \lambda \in \C$. Falls $T\neq 0$, dann ist
+$T^* T \neq 0$. Durch die positive Semidefinitheit der 
+Abbildung, folgt $ \lambda >0$. Betrachte $c = 
+\sqrt{ \lambda^{-1}}$. Dann ist $(cT)^*(cT) = \id$. 
+Zusätzlich folgt analog, dass $T T^*$ bijektiv ist. Damit
+muss $cT$ bijektiv sein und somit auch unitär.\\
+Für je zwei $G$-Homomorphismen $S,T: V_ \rho\to V_ \pi$ mit
+$T\neq 0$ folgt also, dass $S \circ T^{-1} \in \Hom_G(V_ 
+\pi, V_ \pi)$. Somit $S \circ T^{-1} = \lambda \id$ für
+ein $ \lambda \in\C$. Somit $S = \lambda T$. Dies zeigt
+die Eindimensionalität.
+\end{proof}
+\printindex
+\end{document}
