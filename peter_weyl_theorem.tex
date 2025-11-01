@@ -397,7 +397,7 @@ Eigenschaften:
 Dass wir nicht zwischen linken und rechten Haarmaßen
 unterscheiden müssen, erleichtert die Situation erheblich,
 weswegen wir uns nun den endlichdimensionalen Darstellungen
-widmen können. Sei also im Folgenden stets $G$ eine kompakte
+widmen können. Sei also im Folgenden stets $K$ eine kompakte
 (also insbesondere lokalkompakte) topologische Gruppe sowie
 $ (\rho, V)$ eine endlichdimensionale Darstellung, sofern
 nicht anders gefordert.
@@ -408,6 +408,55 @@ eine unitäre Darstellung wird. Falls $ \rho$ irreduzibel
 ist, dann ist dieses Skalarprodukt eindeutig bis auf
 eine positive Konstante bestimmt.
 \end{lemma}
+\begin{proof}
+Wir wählen ein beliebiges Skalarprodukt $( \cdot, \cdot): 
+V\times V\to \C$. Dann definieren wir ein neues 
+Skalaproofukt durch den Ausdruck
+$$ \langle v, w \rangle \coloneq \int_{K} (
+ \rho(k)v, \rho(k)w)\,\diff k$$
+bezüglich des Haarmaßes $ \mu$, für das $ \mu(K) = 1$ gilt.
+Wir zeigen nun, dass dies tatsächlich ein Skalarprodukt
+definiert:
+\begin{enumerate}
+    \item Die Linearität folgt direkt aus der Linearität
+        von $ (\cdot, \cdot)$ und des Integrals.
+    \item Dass das Skalarprodukt hermitesch ist, folgt
+        unmittelbar aus der Hermitizität des ursprünglichen
+        Skalarproduktes und dem Fakt, dass Konjugieren und
+        Integrieren kommutieren.
+    \item Es bleibt nur noch zu zeigen, dass die so
+        definierte Abbildung positiv definit ist. Dabei ist
+        die Positivität ebenfalls klar. Sei also $ v \in V$,
+        sodass $ \langle v,v \rangle =0$. Dann gilt
+        $$ 0 = \langle v,v \rangle = \int_{K} ( \tau(k)v, 
+        \tau(k)v)  \,\diff k.$$
+        Die Abbbildung $ k \mapsto (\tau(k)v, 
+        \tau(k)v) $ ist stetig und somit können
+        wir obiges Korollar aus der Maßtheorie %TODO 
+        verwenden und erhalten, dass $ k \mapsto ( \tau(k)v
+        , \tau(k)v)$ gleich der Nullabbildung ist. 
+        Insbesondere gilt also für $k = 1_G$, dass
+        $ \tau(1_G) = \id_V$. Somit folgt also ebenfalls
+        $ (v, v) = 0$. Da $(\cdot, \cdot)$ ein Skalarprodukt
+        ist, folgt $ v = 0$.
+\end{enumerate}
+Damit ist $ \langle \cdot, \cdot \rangle $ ein Skalarprodukt
+und wir müssen nur noch zeigen, dass $ \rho$ unitär 
+bezüglich diesen Skalarprodukts ist. Dazu sehen wir, dass
+\begin{align*}
+    \langle \tau(x)v, \tau(x)w \rangle 
+    &= \int_{K}(\tau(k)\tau(x)v, \tau(k)\tau(x)w)\,\diff k\\
+    &= \int_{K}( \tau(kx)v, \tau(kx)w) \,\diff  k\\
+    &= \int_{K} ( \tau(k)v, \tau(k)w) \,\diff k\\
+    &= \langle v,w \rangle, 
+\end{align*}
+da die Gruppe $K$ unimodular ist und es sich mit $f:
+K\to \C, k\mapsto ( \tau(k)v, \tau(k)w)$ bei
+$R_x f : K\to \C$ genau um $k \mapsto ( \tau(kx)v, 
+\tau(kx)w)$ handelt und wir somit 
+Satz \ref{thm:propsModularFunction} anwenden können.
+\end{proof}
+
 Dies erlaubt es uns also, endlichdimensionale Darstellungen
 immer als unitäre Darstellungen aufzufassen.
 \printindex
