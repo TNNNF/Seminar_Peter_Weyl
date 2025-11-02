@@ -1,0 +1,11 @@
+*.ind
+*.idx
+*.ilg
+*.toc
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.pdf
+*.aux
+*.syntex.gz
