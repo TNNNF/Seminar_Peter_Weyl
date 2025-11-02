@@ -8,4 +8,4 @@
 *.fdb_latexmk
 *.pdf
 *.aux
-*.syntex.gz
+*.synctex.gz
