@@ -43,10 +43,8 @@ Darstellungstheorie topologischer Gruppen.
         $ \mathcal L(V, W)$ die Menge der beschränkten,
         stetigen linearen Abbildungen $T:V\to W$.
 \end{itemize}
-\chapter{Grundlagen}
-\section{Haarsche Integrationstheorie}
-\section{Funktionalanylsis}
-\chapter{Darstellungstheorie}
+
+\chapter{Grundlagen der Darstellungstheorie}
 Ziel der Darstellungstheorie ist es gewissermaßen, das 
 Problem der schwierigen Strukturierung von Gruppen zu
 lösen, indem man die Elemente in lineare Operatoren 
@@ -101,7 +99,6 @@ Jeder abgeschlossene Untervektorraum $U \subseteq V_ \rho$,
 für den $ \rho(G) U \subseteq U$ gilt, liefert eine 
 Unterdarstellung durch Einschränken von $ \rho$ auf $ U$.
 \end{bemerkung}
-
 Für den Fall, dass die Banachräume $V$ für unsere 
 Darstellungen sogar Hilberträume sind, gibt es noch
 eine weitere Art von Darstellungen:
@@ -113,20 +110,6 @@ $ \rho(g)$ unitär ist für alle $g \in G$, also
 $ \langle \rho(g)v, \rho(g)w \rangle = \langle v, w\rangle$
 für alle $ g \in G$ und alle $ v,w \in V$.
 \end{definition}
-Wir möchten später zeigen, dass sich jede endlichdimensionale
-Darstellung als direkte Summe von irreduziblen Darstellungen
-schreiben lässt. Dazu definieren wir
-\begin{definition}[Direkte Summe von Darstellungen]
-Seien $( \rho_1, V_1), (\rho_2, V_2)$ zwei unitäre 
-Darstellungen. Auf der direkten Summe von Vektorräumen
-$V \coloneq V_1 \oplus V_2$ definieren wir die
-\underline{direkte Summe von Darstellungen}
-\index{direkte Summe von Darstellungen} $\rho = 
-\rho_1 \oplus \rho_2$ durch komponentenweise Wirkung. 
-Analog definiert man dies für beliebige Indexfamilien
-$I$.
-\end{definition}
-
 Besonders relevant werden auch Beziehungen zwischen
 Darstellungen, die wie üblich über Abbildungen gegeben sind.
 \begin{definition}[ $G$-Homomorphismen, Äquivalenz von 
@@ -271,7 +254,7 @@ als könne man damit nur die Homomorphismen einer Darstellung
 auf sich selbst klassifizieren, liefert es auch viele
 Informationen für die Homomorphismen zwischen beliebigen
 irreduziblen Darstellungen.
-\begin{korollar}\label{cor:HomSpaceOneDimensional}
+\begin{korollar}
 Seien $( \rho, V_ \rho), ( \pi, V_ \pi)$ zwei irreduzible,
 unitäre Darstellungen. Dann gilt für einen $G$-
 Homomorphismus $T: V_ \rho\to V_ \pi$, dass $T=0$ oder dass
@@ -323,9 +306,9 @@ Situation jedoch recht überschaubar und hier wird uns das
 erste Mal die Integration bezüglich des Haarmaßes gute 
 Dienste erweisen. \\
 Zuerst beginnen wir damit, die endlichdimensionalen 
-Darstellungen genauer zu studieren. Dies wirkt auf den 
-ersten Blick stark einschränkend. Wir werden jedoch sehen,
-wie mächtig diese Darstellungen auf kompakten Gruppen 
+Darstellungen genauer zu studieren. Dies wirkt zuerst stark
+einschränkend, jedoch werden wir sehen, dass auf einer 
+kompakten Gruppe dies tatsächlich schon alle Darstellungen
 sind.\\
 Bevor wir damit jedoch starten können, müssen wir zumindest
 kurz über die Haarmaße auf kompakten Gruppen reden. A
@@ -428,7 +411,7 @@ eine positive Konstante bestimmt.
 \begin{proof}
 Wir wählen ein beliebiges Skalarprodukt $( \cdot, \cdot): 
 V\times V\to \C$. Dann definieren wir ein neues 
-Skalarprodukt durch den Ausdruck
+Skalaproofukt durch den Ausdruck
 $$ \langle v, w \rangle \coloneq \int_{K} (
  \rho(k)v, \rho(k)w)\,\diff k$$
 bezüglich des Haarmaßes $ \mu$, für das $ \mu(K) = 1$ gilt.
@@ -471,112 +454,10 @@ da die Gruppe $K$ unimodular ist und es sich mit $f:
 K\to \C, k\mapsto ( \tau(k)v, \tau(k)w)$ bei
 $R_x f : K\to \C$ genau um $k \mapsto ( \tau(kx)v, 
 \tau(kx)w)$ handelt und wir somit 
-Satz \ref{thm:propsModularFunction} anwenden können. Was
-noch zu zeigen ist, ist die Eindeutigkeit bis auf 
-positive Konstanten im Fall irreduzibler Darstellungen. 
-Dazu seien $( \rho_1, V_1), (\rho_2, V_2)$ Darstellungen,
-die sich nur im unitären Skalarprodukt auf $V$ 
-unterscheiden. Bezeichne diese Skalarprodukte mit 
-$ \langle \cdot, \cdot \rangle_1$ und 
-$ \langle \cdot,\cdot \rangle_2$. Betrachte nun die
-lineare Abbildung $\id:V_1\to V_2, v\mapsto v$. Da
-$V_1$ und $V_2$ endlichdimensional ist, ist $\id$ 
-stetig und ein $G$-Homomorphismus zwischen $ \rho_1$
-und $\rho_2$. Nun nutzen wir Korollar
-\ref{cor:HomSpaceOneDimensional}, um zu folgern, dass
-es ein $c>0$ gibt, sodass $c\cdot \id$ unitär zwischen
-den beiden Darstellungen ist. Insbesondere folgt dann
-also, dass 
-\begin{align*}
-	c^2 \langle v_1, v_2 \rangle_2 
-	&= \langle c v_1, c v_2 \rangle_2 \\
-	&= \langle v_1, v_2 \rangle_1
-\end{align*}
-Damit sind die Skalarprodukte bis auf positive Konstante
-gleich.
+Satz \ref{thm:propsModularFunction} anwenden können.
 \end{proof}
-Zusätzlich lassen sich die endlichdimensionalen 
-Darstellungen gut in "Atome" -- die irreduziblen 
-Darstellungen -- zerlegen.
-\begin{lemma}\label{lem:FiniteDimReprSumOfIrredRepr}
-Sei $( \rho, V)$ eine endlichdimensionale Darstellung 
-von $K$. Dann gibt es irreduzible Darstellungen 
-$(\rho_i, V_i)_{i \in I}$, sodass $$ \rho = 
-\bigoplus_ { i \in I } \rho_i$$.
-\end{lemma}
-\begin{proof}
-Sei $K$ eine kompakte, topologische Gruppe und $(\rho, V)$
-eine Darstellung von $K$. Da $V$ endlichdimensional ist,
-können wir die Aussage mit Induktion über $\dim(V)$
-führen.\\
-\underline{I.A. ($\dim(V)=1$):} Dieser Fall ist klar, da die
-einzigen Unterräume von $V$ $ \{ 0 \} $ und $V$ sind.
-Somit muss jede eindimensionale Darstellung schon
-direkt irreduzibel sein.\\
-\underline{I.S.:} Sei $ V$ ein Vektorraum der Dimension
-$ n+1$ für ein beliebiges $ n \in \N_0$. Angenommen, wir 
-haben die Aussage schon für alle Vektorräume der 
-Dimension kleiner gleich $n$ gezeigt. Zusätzlich können
-wir mit Lemma 
-\ref{lem:finiteDimensionalRepresentationsAlwaysUnitary}
-annehmen, dass $ \rho$ eine unitäre Darstellung ist. 
-Falls $\rho$ bereits irreduzbiel ist, sind wir fertig.
-Ansonsten gibt es einen $\rho(K)$-invarianten 
-Untervektorraum $ \{ 0 \} \subsetneq  U \subsetneq V$. 
-Betrachte dessen orthogonales Komplement $U^\perp$. 
-Auch dieser ist abgeschlossen unter $\rho(K)$, denn 
-für $ g \in K, u \in U, v \in U^\perp$ gilt:
-\begin{align*}
-	\langle u, \rho(g)v \rangle 
-	&= \langle \rho(g)^*u, v \rangle \\
-	&= \langle \rho(g^{-1})u, v \rangle\\
-	&= 0,
-\end{align*}
-wobei wir im vorletzten Schritt verwendet haben,
-dass $ \rho(g)$ unitär ist, und im letzten
-Schritt, dass $U$ $\rho(K)$-invariant ist.
-Nun können wir die Induktionsvoraussetzung auf
-$U$ und $U^\perp$ anwenden und erhalten durch
-$ V = U \oplus U^\perp$ die gewünschte Aussage.
-\end{proof}
-Wir beenden diesen Abschnitt mit zwei Definitionen
-und einem Korollar:
-\begin{definition}[unitäres Dual, endliches unitäres Dual]
-Sei $G$ eine lokalkompakte Gruppe. Dann bezeichnen
-wir mit $\UDual{G}$ die Menge aller Äquivalenzklassen
-irreduzibler Darstellungen auf $G$ bezüglich
-unitärer Äquivalenz. Wir nennen $\UDual{G}$
-\underline{unitäres Dual}\index{unitäres Dual}
-zu $G$.\\
-Zusätzlich bezeichnen wir für eine kompakte Gruppe $K$
-die Äquivalenzklassen der endlichdimensionalen,
-irreduziblen Darstellungen mit $\UDualFin{K}$ und
-nennen dies das \underline{endliche, unitäre Dual}
-\index{endliche, unitäre Dual} von $K$.
-Darstellungen
-\end{definition}
-\begin{bemerkung}
-A priori gibt es ein kleines mengentheoretisches Problem
-bei der Definition dieser beiden Mengen, da nicht trivial
-ist, dass es sich wirklich um Mengen handelt. Um dies zu
-beheben, müssten wir ein wenig in die Theorie der 
-Kardinalzahlen eintauchen. Dies wollen wir hier nicht
-weiter vertiefen.
-\end{bemerkung}
-Ein wesentliches Ziel des Vortrags ist es zu zeigen,
-dass $\UDual{K} = \UDualFin{K}$ gilt.
-\begin{korollar}
-	Es gilt stets $\UDualFin{K}\subseteq \UDual{K}$.
-\end{korollar}
-\begin{proof}
-Zu zeigen ist bloß, dass alle endlichdimensionalen
-Darstellungen auch unitär sind. Dies haben wir 
-bereits in Lemma 
-\ref{lem:finiteDimensionalRepresentationsAlwaysUnitary}
-gezeigt.
-\end{proof}
-\chapter{Der Satz von Peter-Weyl}
-\section{Orthogonalitätseigenschaften}
 
+Dies erlaubt es uns also, endlichdimensionale Darstellungen
+immer als unitäre Darstellungen aufzufassen.
 \printindex
 \end{document}
