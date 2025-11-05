@@ -35,7 +35,8 @@ Diesen zu verstehen und zu beweisen ist Gegenstand des
 vorliegenden Seminarvortrags.\\
 Zunächst brauchen wir jedoch noch Grundlagen der
 Darstellungstheorie topologischer Gruppen. Die Primärquelle
-dieses Vortrags ist \cite{principlesHarmAna}.
+dieses Vortrags ist \cite{principlesHarmAna}. An einigen 
+Stellen greifen wir auf \cite{reprCompLieGroups} zurück.
 \section{Notation}
 \begin{itemize}
     \item Für einen Banachraum $V$ bezeichnen wir mit 
@@ -173,7 +174,7 @@ Menge beschränkter Operatoren auf $H$, sodass für alle $S
 \in A$ auch $S^* \in A$ gilt. Dann sind äquivalent:
 \begin{enumerate}
     \item Die einzige $A$-invariante, abgeschlossene Menge
-        ungleich $ \{ 0 \} $ ist $ V$.
+        ungleich $ \{ 0 \} $ ist $ H$.
     \item Falls $T \in \mathcal L(H)$ mit allen $S \in A$
         kommutiert, dann ist $T = \lambda \id_V$ für
         ein $ \lambda \in \C$.
@@ -579,6 +580,70 @@ gezeigt.
 \end{proof}
 \chapter{Der Satz von Peter-Weyl}
 \section{Orthogonalitätseigenschaften}
+Zuerst wollen wir eine gewisse Verallgemeinerung von
+Matrixelementen auf unitäre Darstellungen definieren. 
+\begin{definition}[Matrixkoeffizienten]
+Sei $K$ eine kompakte, topologische Gruppe und $( \tau, V)$
+eine unitäre Darstellung von $K$. Die 
+\underline{Matrixkoeffizienten}\index{Matrixkoeffizienten}
+von $ \tau$ sind Abbildungen der Form $ k\mapsto 
+\langle \tau(k)v, w \rangle $ für beliebige $v,w \in V$.
+\end{definition}
+Für die Matrixkoeffizienten können wir einige spannende
+Eigenschaften feststellen:
+\begin{lemma}\label{lem:propsMatrixCoeffs}
+Sei $K$ eine kompakte, topologische Gruppe und $( \tau, V)$
+eine endlichdimensionale Darstellung. Dann gilt
+\begin{enumerate}
+    \item Die Matrixkoeffizienten von $ \tau$ sind stetig.
+    \item Die Matrixkoeffizienten von $ \tau$ sind 
+        $\LL^2(K)$-Funktionen.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Da $K$ kompakt ist, folgt die zweite Aussage direkt aus 
+der ersten. Zu zeigen ist also nur die Stetigkeit.\\
+Da $ \tau$ eine Darstellung ist, ist die Abbildung
+$$ K\times V\to V, (k, v)\mapsto \tau(k)v$$
+stetig. Insbesondere ist für festes $ v \in V$ also auch 
+die Abbildung
+$$ K\to V, k \mapsto \tau(k)v$$
+stetig. Da Skalarprodukte auf Hilberträumen stets stetig
+sind, folgt, dass die Abbildung 
+$$ \varphi: K\to \C, k \mapsto \langle \tau(k)v, w 
+\rangle $$
+stetig, da eine Komposition stetiger Abbildungen ist.
+\end{proof}
+Im Folgenden wollen wir zeigen, dass es sich bei den
+Matrixkoeffizienten um eine Orthonormalbasis des Raums
+$\LL^2(K)$ handelt. \\
+Dazu wählen wir uns zuerst einen Repräsentanten 
+$( \tau, V_ { \tau })$ jeder Äquivalenzklasse aus 
+$\UDualFin{K}$ sowie eine Orthonormalbasis $e_1, \dots, e_n$
+jedes $ V_ \tau$.\\
+Dann führen wir folgende Notation ein, um die nachfolgenden
+Sätze ein wenig angenehmer aufschreiben zu können:
+$$ \tau_{ij}: K \to \C, k\mapsto \langle \tau(k)e_i, e_j 
+\rangle.$$
+Also meinen wir damit den Matrikoeffizienten von $k$
+an der Stelle $(i, j)$. 
+\begin{satz}\label{thm:orthoPropsMatrixCoeffs}
+Mit obiger Notation gelten folgende Aussagen:
+\begin{enumerate}
+    \item Für $ \tau \neq \rho$ gilt für alle $1 
+    \leq i,j \leq \dim(V_ \tau), 1 \leq r,s \leq 
+    \dim(V_ \rho)$:
+        $$\langle \tau_{ij}, \rho_{rs} \rangle_{\LL^2} =0.$$
+    \item Für $ \tau$ gilt
+        $$ \langle \tau_{ij}, \tau_{rs} \rangle = 
+        \frac{1}{\dim(V_ \tau)}\delta_{ij} \delta_{rs}.$$
+        
+\end{enumerate}
+\end{satz}
+\begin{korollar}
+    $ ( \tau_{ij})_{ \tau, i, j}$ bildet ein 
+    Orthonormalsystem in $ \LL^2(K)$.
+\end{korollar}
 
 \printindex
 \printbibliography
