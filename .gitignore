@@ -9,3 +9,7 @@
 *.pdf
 *.aux
 *.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
