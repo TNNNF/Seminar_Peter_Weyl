@@ -71,12 +71,17 @@ meinen.} von $G$ auf $V$ ist ein Gruppenhomomorphismus
 $ \pi: G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
 (g,v)\mapsto (g,v)\mapsto \pi(g)v$$ stetig ist.
 \end{definition}
-\begin{beispiel}
-Für $G=\SL(2, \R)$ erhalten wir folgende 
-Standarddarstellung auf $V= \R^2$ gegeben durch $\pi: 
-\SL(2,\R)\to \GL(\R^2), A\mapsto A$ mit 
-Matrixmultiplikation als zugehöriger Wirkung.
+\begin{beispiel}[Linksreguläre Darstellung]
+Jede lokalkompakte Gruppe $G$ wirkt auf dem Hilbertraum
+ihrer quadratintegrierbaren Funktionen $ \LL^2(G)$ mit
+der sogenannten \underline{linksregulären Wirkung}
+\index{linksreguläre Wirkung}, welche durch 
+$$ \rho: G\to \GLS{\LL^2(G)}, x\mapsto L_x$$
+gegeben wird mit $ L_x: \LL^2(G)\to \LL^2(G), \phi 
+\mapsto \phi \circ l_{ x^{-1}}$, wobei $l_x$ die 
+Linksmultiplikation mit einem Element $x$ bezeichnet.
 \end{beispiel}
+
 Bereits aus der Algebra 1 wissen wir um die Wichtigkeit 
 bestimmter "elementarer" Strukturen, z.B. den zyklischen
 Gruppen bei der Klassifikation endlicher abelscher Gruppen.
