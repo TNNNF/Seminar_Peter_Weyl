@@ -642,13 +642,34 @@ Mit obiger Notation gelten folgende Aussagen:
     \item Für $ \tau$ gilt
         $$ \langle \tau_{ij}, \tau_{rs} \rangle = 
         \frac{1}{\dim(V_ \tau)}\delta_{ij} \delta_{rs}.$$
-        
 \end{enumerate}
 \end{satz}
-\begin{korollar}
-    $ ( \tau_{ij})_{ \tau, i, j}$ bildet ein 
+Bevor wir den Satz beweisen, ziehen wir ein unmittelbares
+Korollar.
+\begin{korollar}\label{cor:matrixCoeffsOrthoSys}
+    $ ( \dim(V_ \tau) \tau_{ij})_{ \tau, i, j}$ bildet ein 
     Orthonormalsystem in $ \LL^2(K)$.
 \end{korollar}
+Nun beweisen wir den obigen Satz 
+\ref{thm:orthoPropsMatrixCoeffs}:
+\begin{proof}
+\begin{enumerate}
+    \item Seien $ \tau \neq \rho $ Repräsentanten aus 
+        $\UDualFin{K}$.\\
+        Dann betrachte eine lineare Abbildung $ T: V_ \tau 
+        \to V_ \rho$ und definiere dafür die Abbildung
+        $S_T: V_ \tau\to V_ \rho$ durch 
+        $$S_T = \int_{K} \gamma( k^{-1}) T \tau(k) \,
+        \diff.$$
+        Wir bezeichnen $S_T$ ab jetzt nur noch mit $S$.
+        Dann gilt die folgende Gleichheit: 
+        $S \tau(k) = \gamma(k) S$, also ist $S$ ein 
+        Vertauscher der Darstellungen $ \tau$ und $ \rho$.
+        Dazu sehen wir folgende Rechnung: %TODO: Rechnung
+        
+\end{enumerate}
+ 
+\end{proof}
 
 \printindex
 \printbibliography
