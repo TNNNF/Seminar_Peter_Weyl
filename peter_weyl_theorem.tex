@@ -45,6 +45,13 @@ Stellen greifen wir auf \cite{reprCompLieGroups} zurück.
     \item Für zwei Banachräume $V, W$ bezeichnen wir mit
         $ \mathcal L(V, W)$ die Menge der beschränkten,
         stetigen linearen Abbildungen $T:V\to W$.
+    \item Für einen Maßraum $( \Omega, \mathcal{A}, \mu)$
+	    bezeichnen wir mit $\LL^2( \Omega)$ den
+	    üblichen Raum der quadratintegrierbaren
+	    Funktionen $f: \Omega\to \C$. Auf diesem
+	    ist das übliche Skalarprodukt gegeben.
+	    Dieses wird mit $ \langle \cdot, 
+	    \cdot \rangle_{\LL^2}$ notiert.
 \end{itemize}
 \chapter{Grundlagen}
 \section{Haarsche Integrationstheorie}
@@ -659,14 +666,100 @@ Nun beweisen wir den obigen Satz
         Dann betrachte eine lineare Abbildung $ T: V_ \tau 
         \to V_ \rho$ und definiere dafür die Abbildung
         $S_T: V_ \tau\to V_ \rho$ durch 
-        $$S_T = \int_{K} \gamma( k^{-1}) T \tau(k) \,
-        \diff.$$
+        $$S_T = \int_{K} \rho( k^{-1}) T \tau(k) \,
+        \diff k.$$
         Wir bezeichnen $S_T$ ab jetzt nur noch mit $S$.
         Dann gilt die folgende Gleichheit: 
         $S \tau(k) = \gamma(k) S$, also ist $S$ ein 
         Vertauscher der Darstellungen $ \tau$ und $ \rho$.
-        Dazu sehen wir folgende Rechnung: %TODO: Rechnung
-        
+        Dazu sehen wir folgende Rechnung: 
+	\begin{align*}
+		\rho(k) S 
+		&= \rho(k)\left(\int_{K}\rho( m^{-1}) 
+			T \tau(m)\,\diff m \right)\\
+		&= \int_{K} \rho(k)\rho( m^{-1}) T  
+		        \tau(m)\,\diff m  \\
+		&= \int_{K} \rho(k m^{-1}) T \tau(m) 
+		\,\diff m\\
+		&= \int_{K} \rho( (m k^{-1})^{-1}) 
+		T \tau(m k k^{-1})\,\diff m \\
+		&= \int_{K} \rho(m k^{-1})^* T 
+		\tau(m k k^{-1}) \,\diff m  \\
+	\end{align*}
+	Nun können wir den Satz \ref{thm:propsModularFunction}
+	verwenden und folgern, dass
+	\begin{align*}
+		\rho(k)S 
+		&= \int_{K} \rho(m)^* T \tau(mk) 
+		\,\diff m\\
+	        &= \int_{K} \rho( m^{-1}) T \tau(m) \tau(k) 
+		\,\diff m \\
+		&= \left(\int_{K} \rho( m^{-1}) T \tau(m) 
+		\,\diff m \right)( \tau(k))\\
+		&= S \tau(k)
+	\end{align*}
+	Darauf können wir nun das Lemma von Schur bzw. das 
+	Korollar \ref{cor:HomSpaceOneDimensional} verwenden.
+	Denn da $ \tau \neq \rho$ gilt, sind die beiden
+	Darstellungen nicht unitär äquivalent. Oben haben
+	wir jedoch nachgerechnet, dass die Abbildung $S$
+	ein Vertauscher zwischen den beiden Darstellungen
+	ist. Somit muss $S=0$ gelten.\\
+	Nun wollen wir die Eigenschaften solcher $S_T$ 
+	ausnutzen. Dafür wählen wir zuerst zwei 
+	Orthonormalbasen $(e_j)$ und $(f_s)$ von $V_ \tau$
+	bzw. $ V_ \rho$. und betrachten die lineare
+	Abbildung $ T_ { js } $, welche definiert wird
+	durch $T_{ js}(v) = \langle v, e_j \rangle f_s$.
+	Für diese Abbildung wählen wir jetzt $S_ { js } 
+	\coloneq S_ { T_ { js }   }$. Dann erhalten
+	wir unmittelbar unter Ausnutzung der obigen 
+	Rechnung
+	\begin{align*}
+		0 
+		&= \langle S_{js}e_i, f_r \rangle \\
+		&= \int_{K} \langle \rho( k^{-1})
+		T_{js} \tau(k)e_i, f_r \rangle  \,\diff k\\
+		&= \int_{K} \langle \rho( k^{-1})
+		\langle \tau(k)e_i, e_j \rangle f_s, f_r 
+		\rangle \,\diff k \\
+		&= \int_{K} \langle \tau(k)e_i, e_j \rangle  
+		\langle \rho( k^{-1})f_s, f_r \rangle 
+		\,\diff k\\
+		&= \int_{K} \langle \tau(k)e_i, e_j \rangle
+		\langle f_s, \rho(k) f_r \rangle \,\diff k\\
+		&= \int_{K} \langle \tau(k)e_i, e_j \rangle 
+		\overline{\langle \rho(k)f_r, f_s  \rangle} 
+		\,\diff k\\
+		&= \int_{K} \tau_{ij}(k) 
+		\overline{\rho(k)_{rs}}  \,\diff k \\
+		&= \langle \tau_{ij}, \rho_{rs} 
+		\rangle_{\LL^2}.
+	\end{align*}
+	Dies zeigt den ersten Teil der Aussage.
+    \item Nun betrachten wir den Fall, dass wir den
+	    gleichen Repräsentanten der Darstellungen
+	    verwenden, also $ \langle \tau_{ij}, \tau_{rs} 
+	    \rangle_{\LL^2}$. Obige Rechnung liefert 
+	    erneut $$ \langle S_{js}e_i, e_r \rangle 
+	    = \langle \tau_{ij}, \tau_{rs}\rangle_{\LL^2}.$$
+	    Nun ist jedoch $S \in \Hom_{G}(V_\tau, V_\tau)$.
+	    Damit folgt aus dem \hyperref[lem:Schur]
+	    {Lemma von Schur}, dass $S_{js} = \lambda 
+	    \id_{ V_ \tau}$. Somit muss für $i \neq r$
+	    folgen, dass $\langle S_{js} e_i, 
+	    e_r\rangle=0$.\\
+	    Wir wollen nun noch zeigen, dass auch für
+	    $j \neq s$ die Gleichheit mit $0$ folgt. Seien
+	    also $j \neq s$. Wir zeigen dann sogar,
+	    dass $S_{js} = 0$. Dazu betrachten wir ein
+	    typisches Argument in der Theorie irreduzibler 
+	    Darstellungen. Es gilt:
+	    \begin{align*}
+		   \tr( S_{js}) 
+		   &= %TODO: proof 
+	    \end{align*}
+	    
 \end{enumerate}
  
 \end{proof}
