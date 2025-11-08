@@ -79,6 +79,7 @@ $ \pi: G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
 (g,v)\mapsto (g,v)\mapsto \pi(g)v$$ stetig ist.
 \end{definition}
 \begin{beispiel}[Linksreguläre Darstellung]
+    \label{ex:leftRegularRepr}
 Jede lokalkompakte Gruppe $G$ wirkt auf dem Hilbertraum
 ihrer quadratintegrierbaren Funktionen $ \LL^2(G)$ mit
 der sogenannten \underline{linksregulären Wirkung}
@@ -648,7 +649,7 @@ Mit obiger Notation gelten folgende Aussagen:
         $$\langle \tau_{ij}, \rho_{rs} \rangle_{\LL^2} =0.$$
     \item Für $ \tau$ gilt
         $$ \langle \tau_{ij}, \tau_{rs} \rangle = 
-        \frac{1}{\dim(V_ \tau)}\delta_{ij} \delta_{rs}.$$
+        \frac{1}{\dim(V_ \tau)}\delta_{ir} \delta_{js}.$$
 \end{enumerate}
 \end{satz}
 Bevor wir den Satz beweisen, ziehen wir ein unmittelbares
@@ -757,12 +758,99 @@ Nun beweisen wir den obigen Satz
 	    Darstellungen. Es gilt:
 	    \begin{align*}
 		   \tr( S_{js}) 
-		   &= %TODO: proof 
+           &= \tr\left( \int_{K} \tau( k^{-1}) T_{js} 
+           \tau(k) \,\diff  k\right)\\
+           &= \int_{K}  \tr( \tau(k)^{-1} T_{js} \tau(k))
+           \,\diff  k\\
+           &= \int_{K} \tr( \tau(k) \tau(k)^{-1} T_{js})
+           \,\diff  k\\
+           &= \int_{K} \tr( T_{js}) \,\diff k
 	    \end{align*}
-	    
-\end{enumerate}
- 
+	    Wenn wir nun jedoch die Darstellungsmatrix von
+        $T_{js}$ bezüglich der gewählten Orthonormalbasis
+        $(e_i)$ betrachten, dann fällt auf, dass $j\neq s$
+        impliziert, dass auf der Diagonale nur $0$ steht.
+        Somit ist $ \tr( T_{js}) = 0$ und somit auch
+        $ \tr(S_{js}) = 0$. Gleichzeitig folgt aus 
+        $S_{js} = \lambda \id$ auch, dass 
+        $ \tr(S_{js}) = \lambda^{\dim(V_ \tau)}$. Somit
+        muss $ \lambda = 0 $ gelten und damit ist 
+        $S_{js} = 0$. Dies zeigt wieder, dass 
+        $ \langle \tau_{ij}, \tau_{rs} \rangle_{\LL^2}=0$
+        ist, wenn $i \neq r$ oder $ j \neq s$.\\
+        Was noch zu zeigen bleibt, ist der Fall $i = r$
+        und $j=s$. Wir erhalten $S_{jj} = \lambda_j \id$
+        für alle $j$. Somit folgt aus obiger Rechnung, dass
+        $$ \lambda_j = \langle \lambda_j e_i, e_i \rangle  
+        = \langle S_{jj}e_i, e_i \rangle = \langle \tau
+        _{ij}, \tau_{ij} \rangle_{\LL^2}$$
+        und somit $ \langle \tau_{ij}, \tau_{ij} 
+        \rangle_{\LL^2} $ nicht von $i$ abhängt. Ziel ist
+        es jetzt, zu zeigen, dass alle $ \lambda_j$ gleich
+        sind. Da$ \tau_{ij}$ eine unitäre Darstellung ist, 
+        folgt $ \tau_{ij}(k)=\overline{\tau_{ji}( k^{-1})}$.
+        Somit gilt:
+        \begin{align*}
+            \lambda_j 
+            &= \langle \tau_{ij},\tau_{ij}\rangle_{\LL^2}\\
+            &= \int_{K} \tau_{ij}(k)\overline{\tau_{ij}(k)}
+            \,\diff k \\
+            &= \int_{K} \overline{\tau_{ji}(k^{-1})} 
+            \tau_{ji}( k^{-1})\,\diff k \\
+            &= \int_{K} \overline{ \tau_{ji}( k)}
+            \tau_{ji}( k)\,\diff k\\ %TODO: den Pushforward
+            % der Inversionsabbildung aufschreiben und hier
+            % sauber referenzieren
+            &= \langle \tau_{ji},\tau_{ji} \rangle_{\LL^2}\\
+            &= \lambda_i
+        \end{align*}
+        wobei im vorletzten Schritt Satz ?? %TODO: hier referenz einbauen
+        verwendet wurde. Somit muss es sich stets um den
+        gleichen Wert bei allen $ \lambda_j$ handeln.
+        Diesen nennen wir $ \lambda$. Wir müssen jetzt 
+        nur noch zeigen, dass $ \lambda = 
+        \frac{1}{\dim(V_ \tau)}$ gilt. Dazu schreiben
+        wir $ n\coloneq \dim(V_ \tau)$. Durch Prüfen auf
+        unserer gewählten Basis $(e_i)$ sehen wir schnell
+        ein, dass $ \sum_{i} T_{ii} = \id $. Somit folgt
+        \begin{align*}
+            (n \lambda)\id 
+            &= \sum_{i} S_{ii}\\
+            &= \sum_{i} \int_{K} \tau( k^{-1}) T_{ii} 
+             \tau(k)\,\diff k\\
+            &= \int_{K} \tau( k^{-1}) \sum_{i}T_{ii} \tau(k)
+            \,\diff  k\\
+            &= \int_{K} \tau( k^{-1}) \id\tau(k) \,\diff k\\
+            &= \id
+        \end{align*}
+        Somit muss $ \lambda = \frac{1}{n}$ folgen, was die
+        zu zeigende Aussage beweist.
+\end{enumerate} 
 \end{proof}
+Damit wissen wir schon einmal, dass die Matrixkoeffizienten
+ein Orthonormalsystem bilden. Der Frage, ob sie auch eine
+Orthonormalbasis bilden, werden wir im nächsten Abschnitt 
+nachgehen, wenn wir den Satz von Peter-Weyl beweisen werden.
+\section{Vollständigkeitseigenschaften}
+In diesem Abschnitt werden wir mehrere Sätze beweisen,
+die unter dem Satz von Peter-Weyl bekannt sind:
+\begin{satz}[Peter-Weyl I]
+    Sei $K$ eine kompakte, topologische Gruppe sowie 
+    $ \tau$ Repräsentanten der Äquivalenzklassen aus 
+    $\UDualFin{K}$ mit dem zugehörigen Orthonormalsystem
+    $( \tau_{ij})_{ \tau, i, j}$ aus 
+    \ref{thm:orthoPropsMatrixCoeffs}. Dann gilt
+    \begin{enumerate}
+        \item dieses Orthonormalsystem ist sogar eine
+            Orthonormalbasis.
+        \item Die linksreguläre Darstellung $(L, \LL^2(K))$
+            aus Beispiel \ref{ex:leftRegularRepr}
+            zerfällt in eine direkte Summe 
+            endlichdimensionaler, irreduzibler 
+            Darstellungen.
+    \end{enumerate}
+    
+\end{satz}
 
 \printindex
 \printbibliography
