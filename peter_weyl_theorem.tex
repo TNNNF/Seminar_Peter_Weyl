@@ -833,7 +833,25 @@ Orthonormalbasis bilden, werden wir im nächsten Abschnitt
 nachgehen, wenn wir den Satz von Peter-Weyl beweisen werden.
 \section{Vollständigkeitseigenschaften}
 In diesem Abschnitt werden wir mehrere Sätze beweisen,
-die unter dem Satz von Peter-Weyl bekannt sind:
+die unter dem Satz von Peter-Weyl bekannt sind. Dazu benötigen
+wir jedoch noch ein wenig Vorarbeit:
+\begin{definition}[Dirac-Funktionen, Dirac-Netz]
+Auf einer lokalkompakten, topologischen Gruppe $G$ heißt eine
+Funktion $ \phi \in C_c(G)$ eine \underline{Dirac-Funktion}
+\index{Dirac-Funktion}, falls
+\begin{itemize}
+	\item $ \phi \geq 0$,
+	\item $ \int_{G} \phi(x) \,\diff x =1  $,
+	\item $ \phi( x^{-1}) = \phi(x)$.
+\end{itemize}
+Sei $\mathcal U$ die Menge aller offenen Umgebungen der $1_G$.
+Dann heißt eine Familie von Dirac-Funktionen $( \phi_U)_ 
+{ U \in \mathcal U  } $ ein \underline{Dirac-Netz}
+\index{Dirac-Netz}, falls $ \supp{ \phi_U} \subseteq U$
+für alle $U \in \mathcal{U}$ gilt.
+\end{definition}
+% TODO: Faltung und Faltung glättet L²-Funktionen zu C-
+% Funktionen
 \begin{satz}[Peter-Weyl I]
     Sei $K$ eine kompakte, topologische Gruppe sowie 
     $ \tau$ Repräsentanten der Äquivalenzklassen aus 
@@ -848,9 +866,52 @@ die unter dem Satz von Peter-Weyl bekannt sind:
             zerfällt in eine direkte Summe 
             endlichdimensionaler, irreduzibler 
             Darstellungen.
-    \end{enumerate}
-    
+    \end{enumerate} 
 \end{satz}
+\begin{proof}
+\begin{enumerate}
+	\item Sei $ \tau \in \UDualFin{K}$ und $ M_ \tau$ der
+	Unterraum, der durch die Matrixkoeffizienten $ M_ 
+	\tau$ aufgespannt wird. Zuerst sehen wir schnell ein,
+	dass für einen Matrixkoeffizienten $ h(k) = 
+	\langle \tau(k)v, w  \rangle $ gilt
+	\begin{align*}
+		h^*(k) &= \bar{h( k^{-1})} = \langle \tau(k)
+		w,v \rangle \in M_ \tau\\
+		L_{k_0}h(k) &= h( k_0^{-1}k) = \langle 
+		\tau(k)v, \tau(k_0)w \rangle \in M_ \tau\\
+		R_{k_0}h(k) &= h( k k_0) = \langle \tau(k) 
+		\tau(k_0)v, w \rangle in M_ \tau.
+	\end{align*}
+	Somit ist $ M_ \tau$ abgeschlossen unter Links- und
+	Rechtstranslationen sowie Konjugation. Nun 
+	bezeichnen wir mit $M$ den $\LL^2(K)$-Abschluss 
+	aller $M_ \tau$. Wir wollen zeigen, dass $M = 
+	\LL^2(K)$ oder äquivalent, dass $ M^\perp = \{ 0 \}$.
+	Angenommen, $M^\perp \neq \{ 0 \}$. 
+	\begin{claim}
+		$\orthoComp{M}$ 
+		enthält eine stetige Funktion ungleich	der
+		Nullfunktion.
+	\end{claim}
+	Sei $ H \neq 0$ in $M^\perp$ und wähle ein Dirac-Netz
+	$ (\phi_U)_U$. Dann konvergiert $ \phi_U \ast H$
+	in der $\LL^2$-Norm gegen $H$. Da $\orthoComp{M}$ 
+	abgeschlossen unter Translationen ist, und $ \phi_U
+	\in C_c(K)$ für alle $U \in \mathcal{U}$ folgt 
+	direkt, dass $ \phi_U \ast H \in \orthoComp{M}$.
+	Da die Faltung Funktionen glättet und es ein $U \in
+	\mathcal{U}$ geben muss mit $ \phi_U \ast H \neq 0$
+	(sonst wäre $H$ durch die $\LL^2$-Konvergenz bereits
+	die Nullfunktion), folgt die Behauptung.\\
+	Wir wählen also eine stetige Funktion $F_1 \in 
+	\orthoComp{M} $ mit $ F_1 \neq 0$. Durch Translation
+	und Reskalierung können wir annehmen, dass $F_1(e)
+	>0$.
+\end{enumerate}
+
+\end{proof}
+
 \section{Anwendung auf Lie-Gruppen}
 Für die Situation von Lie-Gruppen können wir aus dem 
 Satz von Peter und Weyl die Existenz treuer Darstellungen
