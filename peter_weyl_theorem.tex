@@ -852,7 +852,7 @@ für alle $U \in \mathcal{U}$ gilt.
 \end{definition}
 % TODO: Faltung und Faltung glättet L²-Funktionen zu C-
 % Funktionen
-\begin{satz}[Peter-Weyl I]
+\begin{satz}[Peter-Weyl I]\label{thm:peterWeyl}
     Sei $K$ eine kompakte, topologische Gruppe sowie 
     $ \tau$ Repräsentanten der Äquivalenzklassen aus 
     $\UDualFin{K}$ mit dem zugehörigen Orthonormalsystem
@@ -911,14 +911,120 @@ für alle $U \in \mathcal{U}$ gilt.
 \end{enumerate}
 
 \end{proof}
+\section{Anwendungen}
+Mit dem \hyperref[thm:peterWeyl]{Satz von Peter-Weyl}
+lassen sich einige sehr mächtige Aussagen folgern.
+Zuerst wollen wir die obige Dichtheit in $\LL^2(G)$
+auf die Dichtheit in $C(K)$ erweitern, wobei man hier
+beachten muss, dass bezüglich unterschiedlicher Normen
+gearbeitet wird. Um die Dichtheit zu folgern, erinnern
+wir uns zuerst an den Satz von Stone-Weierstraß in der
+Formulierung aus \cite{reprCompLieGroups}:
+\begin{satz}[Stone-Weierstraß]
+	\label{thm:stoneWeierstrass}
+	Sei $ X$ ein kompakter Hausdorff-Raum. Sei
+	$ \mathcal{A} \subseteq C(X, \C)$ eine
+	Unteralgebra von $C(X, \C)$, welche
+	\begin{enumerate}
+		\item alle konstanten Funktionen
+			enthält,
+		\item Punkte trennt, es also für 
+			$x_1 \neq x_2 \in X$ eine
+			Funktion $f \in 
+			\mathcal{A}$ gibt, sodass
+			$f(x_1)\neq f(x_2)$ und
+		\item abgeschlossen unter komplexer
+			Konjugation ist.
+	\end{enumerate}
+	Dann ist $ \mathcal{A}$ dicht in $C(X, \C)$. 
+\end{satz}
+Damit können wir nun die Dichtheit der 
+Matrixkoeffizienten in $C(X, \C)$ folgern, wobei wir
+uns vorher noch Gedanken um das Produkt von 
+Darstellungen Gedanken machen müssen:
+\begin{definition}[Tensorprodukte von Darstellungen]
+Seien $( \rho, V), ( \tau, W)$ endlichdimensionale
+Darstellungen einer kompakten Gruppe $K$. Dann
+erhalten wir mittels $\rho\otimes \tau: K\to 
+V\times W$ gegeben durch
+$$ (\rho \otimes \tau)(k)(v, w) = \rho(k)(v) \otimes 
+\tau(k)(w)$$
+eine neue Darstellung. Diese Operation nennen wir
+das \underline{Tensorprodukt der Darstellungen}
+\index{Tensorprodukt von Darstellungen} $ \rho$ und
+$ \tau$.
+\end{definition}
+Dass diese Darstellung wohldefiniert ist, rechnet man
+schnell nach. Spannender hingegen ist zu prüfen, ob
+es sich bei dieser Darstellung um eine unitäre 
+Darstellung handelt.
+\begin{lemma}
+Seien $( \rho, V)$ und $( \tau, W)$ Darstellungen 
+einer kompakten Gruppe $ K$. Auf dem Tensorprodukt
+$V \otimes W$ sei das kanonische Skalarprodukt
+$$ \langle v_1\otimes w_1, v_2 \otimes w_2 
+\rangle = \langle v_1, v_2 \rangle \cdot 
+\langle w_1, w_2 \rangle $$
+gegeben. Dann ist $ \rho \otimes \tau$ unitär
+bezüglich dieses Skalarproduktes.
+\end{lemma}
+\begin{proof}
+Für $v_1\otimes w_1, v_2 \otimes w_2 \in V\otimes W$
+und $k \in K$ gilt:
+\begin{align*}
+\langle (\rho \otimes \tau)(k)(v_1 \otimes w_1),
+( \rho \otimes \tau)(k)( v_2 \otimes w_w)\rangle
+&= \langle \rho(k)v_1 \otimes \tau(k)w_1,
+\rho(k)v_2 \otimes \tau(k) w_2\rangle \\
+&= \langle \rho(k)v_1, \rho(k)v_2 \rangle
+\cdot \langle \tau(k)w_1, \tau(k)w_2 \rangle \\
+&= \langle v_1, v_2 \rangle \cdot 
+\langle w_1, w_2 \rangle, 
+\end{align*}
+wobei wir im letzten Schritt benutzen, dass die 
+Darstellungen unitär bezüglich ihrer jeweiligen
+Skalarprodukte sind.
+\end{proof}
+\begin{korollar}
+Das Orthonormalsystem Matrixkoeffizienten 
+$ ( \tau_{ij})_{ \tau, i, j}$ hat dichten Spann in 
+$C(X, \C)$.
+\end{korollar}
+\begin{proof}
+Nach \hyperref[thm:stoneWeierstrass]{Satz von 
+Stone-Weierstraß} müssen wir nur
+zeigen, dass es sich beim Spann der $ \tau$
+um Matrixkoeffizienten um eine Algebra handelt,
+welche den obigen Anforderungen genügt. Zuerst 
+rechnen wir nach, dass es sich tatsächlich um eine 
+Algebra handelt. Für zwei Darstellungen$ (\tau, V)$ 
+und $(\rho, W)$ rechnen wir für ihre 
+Matrixkoeffizienten$ \tau_{vw}$ und $ \rho_{xy}$ 
+bezüglich Vektoren $v,w \in V$ und $x,y \in W$ 
+nach, dass $ \tau_{vw} \cdot \rho_{xy} =
+( \tau \otimes \rho)_{v\otimes x, w\otimes y}$
+gilt. Dazu sehen wir für alle $ k \in K$: 
+\begin{align*}
+(\tau_{vw} \otimes \rho_{xy})(k)
+&= \langle \tau(k)v,w \rangle
+\langle \rho(k)x,y \rangle \\
+&= \langle \tau(k)v\otimes \rho(k)x, w \otimes y 
+\rangle \\
+&= \langle ( \tau \otimes \rho)(k) v \otimes x,
+w \otimes y
+\rangle. 
+\end{align*}
+Dies zeigt die Aussage und die Wohldefiniertheit
+der Multiplikation. Somit handelt es sich
+tatsächlich um eine Algebra.
+\end{proof}
 
-\section{Anwendung auf Lie-Gruppen}
 Für die Situation von Lie-Gruppen können wir aus dem 
 Satz von Peter und Weyl die Existenz treuer Darstellungen
 von Lie-Gruppen folgern.
 \begin{definition}[treue Darstellung]
     Eine Darstellung auf einer topologischen Gruppe $G$
-    $ \rho: G\to \GLS(V)$ und einem Vektorraum $V$
+    $ \rho: G\to \GLS{V}$ und einem Vektorraum $V$
     heißt \underline{treu}\index{treue Darstellung},
     falls injektiv ist.
 \end{definition}
