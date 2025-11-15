@@ -84,7 +84,7 @@ Jede lokalkompakte Gruppe $G$ wirkt auf dem Hilbertraum
 ihrer quadratintegrierbaren Funktionen $ \LL^2(G)$ mit
 der sogenannten \underline{linksregulären Wirkung}
 \index{linksreguläre Wirkung}, welche durch 
-$$ \rho: G\to \GLS{\LL^2(G)}, x\mapsto L_x$$
+$$ \rho_L: G\to \GLS{\LL^2(G)}, x\mapsto L_x$$
 gegeben wird mit $ L_x: \LL^2(G)\to \LL^2(G), \phi 
 \mapsto \phi \circ l_{ x^{-1}}$, wobei $l_x$ die 
 Linksmultiplikation mit einem Element $x$ bezeichnet.
@@ -876,8 +876,8 @@ für alle $U \in \mathcal{U}$ gilt.
 	dass für einen Matrixkoeffizienten $ h(k) = 
 	\langle \tau(k)v, w  \rangle $ gilt
 	\begin{align*}
-		h^*(k) &= \bar{h( k^{-1})} = \langle \tau(k)
-		w,v \rangle \in M_ \tau\\
+		h^*(k) &= \overline{h( k^{-1})} = \langle 
+		\tau(k)w,v \rangle \in M_ \tau\\
 		L_{k_0}h(k) &= h( k_0^{-1}k) = \langle 
 		\tau(k)v, \tau(k_0)w \rangle \in M_ \tau\\
 		R_{k_0}h(k) &= h( k k_0) = \langle \tau(k) 
@@ -914,6 +914,20 @@ für alle $U \in \mathcal{U}$ gilt.
 \section{Anwendungen}
 Mit dem \hyperref[thm:peterWeyl]{Satz von Peter-Weyl}
 lassen sich einige sehr mächtige Aussagen folgern.
+Dabei spielen die treuen Darstellungen eine besondere
+Rolle:
+\begin{definition}[treue Darstellung]
+    Eine Darstellung auf einer topologischen Gruppe $G$
+    $ \rho: G\to \GLS{V}$ und einem Vektorraum $V$
+    heißt \underline{treu}\index{treue Darstellung},
+    falls injektiv ist.
+\end{definition}
+\begin{bemerkung}
+Eine Darstellung $ \rho$ ist also genau dann treu, wenn
+$\ker( \rho) = \{ e_G \} $ ist. Das bedeutet also, dass
+nur das triviale Element der "identischen Wirkung" 
+entspricht.
+\end{bemerkung}
 Zuerst wollen wir die obige Dichtheit in $\LL^2(G)$
 auf die Dichtheit in $C(K)$ erweitern, wobei man hier
 beachten muss, dass bezüglich unterschiedlicher Normen
@@ -927,7 +941,7 @@ Formulierung aus \cite{reprCompLieGroups}:
 	Unteralgebra von $C(X, \C)$, welche
 	\begin{enumerate}
 		\item alle konstanten Funktionen
-			enthält,
+			enthält.
 		\item Punkte trennt, es also für 
 			$x_1 \neq x_2 \in X$ eine
 			Funktion $f \in 
@@ -1016,23 +1030,57 @@ w \otimes y
 \end{align*}
 Dies zeigt die Aussage und die Wohldefiniertheit
 der Multiplikation. Somit handelt es sich
-tatsächlich um eine Algebra.
+tatsächlich um eine Algebra. Wir müssen nun noch
+die übrigen Anforderungen prüfen:
+\begin{enumerate}
+\item Wir zeigen, dass die konstante 
+	Einsfunktion enthalten ist. Der Rest
+	folgt aus Skalarmultiplikation. Dazu wählen
+	wir als Darstellung den Vektorraum $\C$
+	und die triviale Darstellung, also
+	$$ \rho: K\to \GLS{\C}, k\mapsto \id_\C.$$
+	Da $\C$ eindimensional ist, erhalten wir
+	die Irreduzibilität sofort. Des Weiteren
+	gilt
+	$$ \langle \rho(k)1, 1 \rangle 
+	= \langle 1, 1 \rangle = 1 $$
+	für alle $ k \in K$. Somit ist die konstante
+	Einsfunktion enthalten.
+\item Dass die Matrixkoeffizienten abgeschlossen
+	unter komplexer Konjugation sind, folgt 
+	direkt aus folgender Rechnung:
+	$$ \overline{\langle  \tau(k)v, w \rangle} = 
+	\overline{\langle v, \tau(k)^{*}w  \rangle} =
+	\langle \tau( k^{-1})w, v \rangle,$$
+	was auch einem Matrixkoeffizienten entspricht.
+	Damit ist die Abgeschlossenheit unter 
+	komplexer Konjugation gezeigt.
+\item Wir betrachten die linksreguläre Darstellung 
+	$ \rho_L$. Nach \ref{thm:peterWeyl} ist ein 
+	direktes Produkt von endlichdimensionalen, 
+	irreduziblen Darstellungen und somit in obigem 
+	$M$. Zudem istdiese Darstellung auch treu. Seien 
+	nun $ g\neq h \in G$. Nach obigen Überlegungen
+	zur linksregulären Darstellung muss 
+	$ \rho_L(g)\neq \rho_L(h)$ sein, da $ \rho_L$
+	injektiv ist. Insbesondere sind $ \rho_L(g)$
+	und $ \rho_L(h)$ stetige Operatoren zwischen
+	Hilberträumen. Damit sind diese gleich genau
+	dann, wenn ihre Matrixkoeffizienten gleich sind.
+	Damit muss es $v,w \in \LL^2(K)$ geben,
+	sodass $$ \langle \rho_L(g)v, w \rangle
+	\neq \langle \rho_L(h)v,w \rangle.$$
+	Dies sind die punktetrennenden 
+	Matrixkoeffizienten, deren Existenz wir beweisen
+	wollten.
+\end{enumerate}
+Somit folgt aus dem Satz \ref{thm:stoneWeierstrass}, dass
+die Matrixkoeffizienten dicht in $C(K)$ sind.
 \end{proof}
 
 Für die Situation von Lie-Gruppen können wir aus dem 
 Satz von Peter und Weyl die Existenz treuer Darstellungen
 von Lie-Gruppen folgern.
-\begin{definition}[treue Darstellung]
-    Eine Darstellung auf einer topologischen Gruppe $G$
-    $ \rho: G\to \GLS{V}$ und einem Vektorraum $V$
-    heißt \underline{treu}\index{treue Darstellung},
-    falls injektiv ist.
-\end{definition}
-\begin{bemerkung}
-Eine Darstellung $ \rho$ ist also genau dann treu, wenn
-$\ker( \rho) = \{ e_G \} $ ist. Das bedeutet also, dass
-nur das triviale Element der "Nullwirkung" entspricht.
-\end{bemerkung}
 Dann gilt die folgende Eigenschaft:
 \begin{satz}\label{thm:compLieGrpsHaveFaithfulRepr}
     Sei $K$ eine kompakte Lie-Gruppe. Dann besitzt $K$
