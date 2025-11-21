@@ -961,7 +961,79 @@ für alle $U \in \mathcal{U}$ gilt.
     \end{enumerate}
     Damit folgt, dass $F_2$ die behaupteten Eigenschaften
     hat. Nun betrachten wir die Funktion $F(x) = F_2(x) + 
-    \overline{F_2( x^{-1})}$.
+    \overline{F_2( x^{-1})}$. Diese Funktion ist 
+    offensichtlich stetig. Zudem rechnet man schnell nach,
+    dass $F \in \orthoComp{M}, F(e)>0$ und $F= F^*$.\\
+    Nun betrachten wir $T:\LL^2(K)\to \LL^2(K), f\mapsto 
+    f\ast F$. Man rechnet schnell unter Ausnutzen des
+    Satzes von Fubini nach, dass $T$ selbstadjungiert
+    ist, da $F(x) = \overline{F( x^{-1})}$ gilt. Zudem 
+    gilt 
+    $$ T(f)(x) = \int_{K} f(y) F( y^{-1}x) \,\diff y.$$
+    Also handelt es sich bei $T$ um einen Integraloperator
+    mit stetigem Kern $ (x,y)\mapsto F( y^{-1}x)$. 
+    %TODO: Integraloperatoren sind Hilbert-Schmidt-Operatoren
+    %TODO: Hilbert-Schmidt-Operatoren sind kompakt
+    Aus ??? folgt, dass es sich bei $T = T^* \neq 0$ (nicht 0,
+    da $F$ stetig ist und an einer Stelle nicht verschwindet)
+    um einen Hilbert-Schmidt-Operator, insbesondere also um 
+    einen kompakten Operator handelt.\\
+    %TODO: Spektralsatz für kompakte Operatoren + Referenz
+    Aus dem Spektralsatz für kompakte, selbstadjungierte
+    Operatoren folgt die Existenz eines Eigenwerts 
+    $ \lambda\neq 0$, für welchen der zugehörige Eigenraum
+    $V_ \lambda$. Dieser Eigenraum ist abgeschlossen unter
+    Linksverschiebung $L_k$ für alle $k \in K$, denn es
+    gilt für $ f \in V_ \lambda$:
+    \begin{align*}
+	    ((L_k f) \ast F)(x) 
+	    &= \int_{K} f( k^{-1}y)F( y^{-1}x) \,\diff y\\
+	    &= \int_{K} f(y) F(k y^{-1} x) \,\diff y \\
+	    &= \int_{K} f(y x^{-1})F(k y^{-1}) \,\diff y\\
+	    &= \int_{K} f(y x^{-1} k) F(k y^{-1} k^{-1}) 
+	    \,\diff y\\
+	    &= \int_{K} f(y x^{-1}k) F( y^{-1}) \,\diff y\\
+	    &= \int_{K} f(y) x^{-1}) F( y^{-1} k^{-1}) 
+	    \,\diff y\\
+	    &= \int_{K} f(y) F( y^{-1} k^{-1}x) \,\diff y\\
+	    &= (f\ast F)( k^{-1}x)\\
+	    &= L_k(f\ast F)( k^{-1}x)\\
+	    &= L_K( \lambda f)( k^{-1}x)\\
+	    &= \lambda L_k f ( k^{-1}x)
+    \end{align*}
+    Somit gilt $ (L_K f) \ast F = \lambda L_k f$ und damit
+    ist der Eigenraum abgeschlossen unter Linksverschiebung.
+    In der Rechnung wurde im vierten Schritt verwendet, dass
+    $F$ konjugationsinvariant ist, weil $F_2$ 
+    konjugationsinvariant ist.\\
+    Demnach können wir auf $ V_ \lambda$ mit der Linkswirkung
+    eine unitäre Darstellung von $K$ finden. Da $V_ \lambda$
+    endlichdimensional ist, finden wir mit Lemma 
+    \ref{lem:FiniteDimReprSumOfIrredRepr} eine irreduzible
+    Unterdarstellung $W \subseteq V_ \lambda \subseteq 
+    \orthoComp{M}$. Für $f,g \in W$ definieren wir
+    $h(k) = \langle L_k f, g \rangle $ den zugehörigen
+    Matrixkoeffizienten der obigen Darstellung. Dann gilt
+    nach Definition
+    $$h(k) = \int_{K} f( k^{-1}x)\overline{g(x)}\,\diff x.$$
+    Gleichzeitig gilt $h = \overline{g \ast f^*} \in 
+    \orthoComp{M}$. Da es sich bei $h$ jedoch um einen 
+    Matrixkoeffizienten handelt, folgt auch $h \in M$. Somit
+    $ \langle h,h \rangle =0$. Damit muss $L_k$ auf $V_ \lambda$
+    die Nullfunktion sein, was einen Widerspruch darstellt.
+    Somit muss $M = \LL^2(K)$ gelten.
+    \item In obigem Beweis haben wir gezeigt, dass
+	    $$\LL^2(K) = \overline{ 
+	    \bigotimes_{ \tau \in \UDualFin{K}} M_ \tau},$$
+	    wobei alle $M_ \tau$ endlichdimensional sind
+	    (genauer gesagt Dimension $\dim( \tau)^2$ hat).
+	    Da alle $ M_ \tau$ abgeschlossen unter Links- und
+	    Rechtsverschiebung sind, zerfällt die linksreguläre
+	    Darstellung $(\LL^2(K), L)$ in eine direkte Summe
+	    endlichdimensionaler Darstellungen. Aus Lemma
+	    \ref{lem:FiniteDimReprSumOfIrredRepr} folgt
+	    die zu zeigende Aussage.
+    
 \end{enumerate}
 
 \end{proof}
