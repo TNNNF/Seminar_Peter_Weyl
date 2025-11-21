@@ -907,7 +907,61 @@ für alle $U \in \mathcal{U}$ gilt.
 	Wir wählen also eine stetige Funktion $F_1 \in 
 	\orthoComp{M} $ mit $ F_1 \neq 0$. Durch Translation
 	und Reskalierung können wir annehmen, dass $F_1(e)
-	>0$.
+	>0$. \\
+    Wir betrachten nun eine neue Funktion 
+    $F_2(x) = \int_{K} F_1( y^{-1}xy)  \,\diff y $. 
+    \begin{claim}
+      Dann hat $F_2$ folgende Eigenschaften:
+      \begin{enumerate}
+          \item $F_2 \in \orthoComp{M}$,
+          \item $F_2$ ist invariant unter Konjugation,
+          \item $F_2(e)>0$.
+      \end{enumerate}
+    \end{claim}
+    \begin{enumerate}
+        \item Sei $ \tau_{vw}$ ein Matrixkoeffizient. Dann
+            ist 
+            \begin{align*}
+                \langle F_2, \tau_{vw} \rangle_{\LL^2}
+                &= \int_{K} F_2(x) \overline{\tau_{vw}(x)}
+                \,\diff  \\
+                &= \int_{K} \int_{K} F_1( y^{-1}xy)   
+                \,\diff y\,\overline{\tau_{vw}(x)}\,
+                \diff x\\
+                &= \int_{K} \int_{K} F_1( y^{-1}xy) 
+                \overline{\tau_{vw}(x)}\,\diff y\,\diff x\\
+                &= \int_{K} \int_{K} F_1( y^{-1}xy) 
+                \overline{\tau_{vw}(x)}\,\diff x\,\diff y\\
+                &= \int_{K} \int_{K} F_1(x) \overline{ 
+                \tau_{vw}( y x y^{-1})}\,\diff x\,\diff y\\
+                &= \int_{K} \int_{K} F_1(x) 
+                \overline{L_{y}(R_{ y^{-1}} \tau_{vw})(x)}
+                \,\diff x  \,\diff y\\
+                &= \int_{K} \langle F_1, L_y( R_ { y^{-1} }
+                \tau_{vw})\rangle \,\diff y
+            \end{align*}
+            Nun haben wir bereits gesehen, dass die
+            Matrixkoeffizienten abgeschlossen unter 
+            Links- und Rechtsverschiebungen sind. Damit
+            ergibt sich, dass $L_y(R_ { y^{-1} }\tau_{vw})$
+            stets ein Matrixkoeffizient und damit
+            insbesondere in $M$ ist. Somit erhalten
+            wir
+            $$ \int_{K} \langle F_1,
+            L_y(R_ { y^{-1} } \tau_{vw} )\rangle \,\diff y
+            = \int_{K} 0 \,\diff y =0.$$
+            Damit ist $F_2 \in \orthoComp{M}$.
+        \item Wir wollen zeigen, dass für alle
+            $x,z \in K$ gilt, dass $F(x) = F( z x z^{-1})$.
+            Dies folgt unmittelbar aus der Links- und
+            Rechtsinvarianz des Haarmaßes.
+        \item Es ist 
+            $$F_2(e) = \int_{K} F_1( y^{-1} e y) 
+            \,\diff y = \int_{K} F_1( e) \,\diff > 0. $$
+    \end{enumerate}
+    Damit folgt, dass $F_2$ die behaupteten Eigenschaften
+    hat. Nun betrachten wir die Funktion $F(x) = F_2(x) + 
+    \overline{F_2( x^{-1})}$.
 \end{enumerate}
 
 \end{proof}
@@ -999,7 +1053,7 @@ wobei wir im letzten Schritt benutzen, dass die
 Darstellungen unitär bezüglich ihrer jeweiligen
 Skalarprodukte sind.
 \end{proof}
-\begin{korollar}
+\begin{korollar}\label{cor:matrixCoeffsDenseInC}
 Das Orthonormalsystem Matrixkoeffizienten 
 $ ( \tau_{ij})_{ \tau, i, j}$ hat dichten Spann in 
 $C(X, \C)$.
@@ -1007,8 +1061,8 @@ $C(X, \C)$.
 \begin{proof}
 Nach \hyperref[thm:stoneWeierstrass]{Satz von 
 Stone-Weierstraß} müssen wir nur
-zeigen, dass es sich beim Spann der $ \tau$
-um Matrixkoeffizienten um eine Algebra handelt,
+zeigen, dass es sich beim Spann Matrixkoeffizienten 
+um eine Algebra handelt,
 welche den obigen Anforderungen genügt. Zuerst 
 rechnen wir nach, dass es sich tatsächlich um eine 
 Algebra handelt. Für zwei Darstellungen$ (\tau, V)$ 
@@ -1067,6 +1121,56 @@ Dann gilt die folgende Eigenschaft:
 \begin{satz}\label{thm:compLieGrpsHaveFaithfulRepr}
     Sei $K$ eine kompakte Lie-Gruppe. Dann besitzt $K$
     eine treue Darstellung.
+\end{satz}
+Bevor wir dies beweisen, müssen wir eine wichtige 
+Eigenschaft von Lie-Gruppen festhalten.
+\begin{satz}[absteigende Ketteneigenschaft]
+    \label{thm:descendingChainProp}
+Sei $G$ eine kompakte Lie-Gruppe und $ K_1 \supseteq K_2 
+\supseteq K_3 \supseteq \dots$ eine absteigende Folge 
+abgeschlossener Untergruppen von $G$. Dann stabilisiert
+sich diese Folge, also gibt es ein $ k \in \N$, sodass
+$ K_l = K_k$ für alle $l \geq k$.
+\end{satz}
+Wir wollen den Satz an dieser Stelle nicht beweisen, 
+sondern verweisen dafür auf \cite{strucThmCompLieGroups}.
+Damit können wir jetzt jedoch Satz 
+\ref{thm:compLieGrpsHaveFaithfulRepr} beweisen:
+\begin{proof}
+Sei $ k \in K \setminus \{ 1\} $. Dann gibt es nach dem
+Lemma von Urysohn eine stetige Funktion $f:G\to \R$
+mit $f(k) \neq f(1)$. Aus dem Korollar 
+\ref{cor:matrixCoeffsDenseInC} folgt die Existenz eines
+Matrixkoeffizienten $ \tau_{1,vw}$ mit $ \tau_{1,vw}$ mit
+einer Darstellung $ \tau_1$ mit $ \tau_{1,vw}(k)\neq 
+\tau_{1,vw}(1)$. Dann ist $ K_1 \coloneq\ker( \tau)$ eine 
+echte, abgeschlossene Untergruppe von $ K$. Falls 
+$ K_1 = \{ 1 \} $, dann ist $ \tau_1$ die gesuchte 
+Darstellung.\\
+Ansonsten wähle $ g \in K_1\setminus \{ 1\} $ und eine
+stetige Funktion $f: K\to \R$, sodass $f(k)\neq f(1)$
+(wieder mit Urysohn) sowie die zugehörige Darstellung
+$ \tau_{2}$ mit $ K_2 \coloneq \ker( \tau_2)$. Dann
+ist $ K_1 \cap K_2 \subsetneq K_1$, da $ \tau_2(g)\neq 
+\tau_2(1)$. Wenn wir diesen Prozess iterieren, erhalten
+wir eine absteigende Folge echt in einander enthaltener, 
+abgeschlossener (also insbesondere kompakter) 
+Untergruppen von $ K$. Nach \ref{thm:descendingChainProp}
+folgt, dass die Schnitte über die Kerne aller Darstellungen
+irgendwann trivial werden. Damit folgt, dass die direkte
+Summe treu ist.
+\end{proof}
+Da sich harmonische Analysis zu einem großen Teil damit
+beschäftigt, die klassische Fourieranalysis zu 
+verallgemeinern, wollen wir am Ende dieser Arbeit wieder
+einige Rückschlüsse, für die konkrete Fourieranalysis 
+festhalten, die uns der Satz von Peter-Weyl ermöglicht.
+\begin{satz}
+Sei $ f \in \LL^2(\mathbb S^1)$. Dann konvergiert die 
+Fourierreihe von $ f$ gegen $ f$ in der $\LL^2$-Topologie.
+Darüberhinaus kann jede stetige Funktion $f:\mathbb S^1\to
+\C$ gleichmäßig durch trigonometrische Polynome angenähert
+werden.
 \end{satz}
 
 
