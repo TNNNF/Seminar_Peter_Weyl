@@ -1181,7 +1181,35 @@ die übrigen Anforderungen prüfen:
 	was auch einem Matrixkoeffizienten entspricht.
 	Damit ist die Abgeschlossenheit unter 
 	komplexer Konjugation gezeigt.
-\item  
+\item Die eigentlich spannende Eigenschaft ist, dass
+    die Matrixkoeffizienten Punkte trennen. Zuerst 
+    überlegen wir uns, dass es genügt zu zeigen, dass 
+    es im Fall von topologischen Gruppen $G$ genügt, 
+    dass es für alle $x \in G$ eine stetige 
+    Funktion $f:G\to \C$, sodass $f(x)\neq f(1)$.\\
+    Um dies zu sehen, seien $x_1 \neq x_2$. Dann gibt es
+    nach Annahme eine stetige Funktion $f: G\to \C$,
+    sodass $f( x_1^{-1} x_2) \neq f(1) $.  Dann ist
+    insbesondere die Abbildung $ L_ { x_1 } f $ als 
+    Verkettung stetiger Abbildungen stetig und es gilt:
+    $$ L_ { x_1 } f(x_2) = f( x_1^{-1} x_2) \neq f(1)
+    = f( x_1^{-1} x_1) = L_{x_1} f(x_1).$$
+    Somit ist die gewünschte Aussage gezeigt.\\
+    Wir wollen also zeigen, dass es für alle $g\in G$ einen
+    Matrixkoeffizienten $ \tau_{vw}$ gibt, sodass
+    $ \tau_{vw}(g) \neq \tau_{vw}(1)$.
+    Dazu werden wir eine stärkere Eigenschaft zeigen: für
+    alle $g \in G$ gibt es eine endlichdimensionale, 
+    unitäre, irreduzible Darstellung $ \rho$, sodass
+    $ \rho(g)\neq \rho(1)$. Daraus folgt dann direkt, dass
+    es einen unterschiedlichen Matrixkoeffizienten geben
+    muss, sonst wären die Abbildungen gleich.\\
+    Dazu betrachten wir den Schnitt $H$ der Kerne aller
+    endlichdimensionalen, irreduziblen, unitären 
+    Darstellungen. Da Kerne normal sind und der Schnitt
+    normaler Untergruppen normal ist, ist $H \unlhd G$.\\
+    Damit erhalten wir auf $G/H$ eine wohldefinierte
+    Gruppenstruktur.
 \end{enumerate}
 Somit folgt aus dem Satz \ref{thm:stoneWeierstrass}, dass
 die Matrixkoeffizienten dicht in $C(K)$ sind.
