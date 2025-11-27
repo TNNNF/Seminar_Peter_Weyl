@@ -1182,20 +1182,24 @@ die übrigen Anforderungen prüfen:
 	Damit ist die Abgeschlossenheit unter 
 	komplexer Konjugation gezeigt.
 \item Die eigentlich spannende Eigenschaft ist, dass
-    die Matrixkoeffizienten Punkte trennen. Zuerst 
-    überlegen wir uns, dass es genügt zu zeigen, dass 
-    es im Fall von topologischen Gruppen $G$ genügt, 
-    dass es für alle $x \in G$ eine stetige 
-    Funktion $f:G\to \C$, sodass $f(x)\neq f(1)$.\\
+    die Matrixkoeffizienten Punkte trennen\footnote{
+    Hier wird der Beweis aus der ersten Antwort dieses 
+    StackExchange-Beitrags ausformuliert: 
+\href{https://math.stackexchange.com/questions/1479222/peter-weyl-theorem-versions}{\textcolor{blue}{Peter-Weyl theorem versions}}.}. 
+    Zuerst überlegen wir uns, dass es genügt zu zeigen, 
+    dass 
+    es im Fall von topologischen Gruppen $K$ genügt, 
+    dass es für alle $x \in K$ eine stetige 
+    Funktion $f:K\to \C$, sodass $f(x)\neq f(1)$.\\
     Um dies zu sehen, seien $x_1 \neq x_2$. Dann gibt es
-    nach Annahme eine stetige Funktion $f: G\to \C$,
+    nach Annahme eine stetige Funktion $f: K\to \C$,
     sodass $f( x_1^{-1} x_2) \neq f(1) $.  Dann ist
     insbesondere die Abbildung $ L_ { x_1 } f $ als 
     Verkettung stetiger Abbildungen stetig und es gilt:
     $$ L_ { x_1 } f(x_2) = f( x_1^{-1} x_2) \neq f(1)
     = f( x_1^{-1} x_1) = L_{x_1} f(x_1).$$
     Somit ist die gewünschte Aussage gezeigt.\\
-    Wir wollen also zeigen, dass es für alle $g\in G$ einen
+    Wir wollen also zeigen, dass es für alle $g\in K$ einen
     Matrixkoeffizienten $ \tau_{vw}$ gibt, sodass
     $ \tau_{vw}(g) \neq \tau_{vw}(1)$.
     Dazu werden wir eine stärkere Eigenschaft zeigen: für
@@ -1207,9 +1211,55 @@ die übrigen Anforderungen prüfen:
     Dazu betrachten wir den Schnitt $H$ der Kerne aller
     endlichdimensionalen, irreduziblen, unitären 
     Darstellungen. Da Kerne normal sind und der Schnitt
-    normaler Untergruppen normal ist, ist $H \unlhd G$.\\
-    Damit erhalten wir auf $G/H$ eine wohldefinierte
-    Gruppenstruktur.
+    normaler Untergruppen normal ist, ist $H \unlhd K$.
+    Ebenso sehen wir ein, dass $H$ abgeschlossen und
+    damit kompakt ist.\\
+    Damit erhalten wir auf $K/H$ eine wohldefinierte
+    Gruppenstruktur. Zudem ist $K/H$ eine kompakte Gruppe.
+    Somit erhalten wir auf $K, H$ und $K/H$ jeweils
+    ein Haarmaß und können die folgende Formel verwenden
+    (siehe z.B. \cite[Theorem 1.5.3]{principlesHarmAna}):
+    $$ \int_{K} f(x)  \,\diff x = \int_{K/H} \int_{H} 
+    f(xh)  \,\diff h  \,\diff x$$
+    für jedes $ f \in \LL^1(K)$.\\
+    Damit können wir folgern, dass die Quotientenabbildung
+    $q^*: \LL^1(G/H) \to \LL^1(G), f\mapsto f\circ q$ 
+    eine Isometrie ist. Denn für $ f \in \LL^1(G/H)$
+    gilt mit obiger Formel:
+    \begin{align*}
+        \int_{K} (f\circ q)(x)  \,\diff x
+        &= \int_{K/H} \int_{H} (f\circ q)(xh)
+        \,\diff h  \,\diff x \\
+        &= \int_{K/H} \int_{H} f(xhH) \,\diff h\,\diff x\\
+        &= \int_{K/H} \int_{H} f(xH) \,\diff h \,\diff x\\
+        &= \int_{K/H} f(xH)  \,\diff x,
+    \end{align*}
+    wobei im letzten Schritt verwendet wurde, dass 
+    $\diff h$ ein normiertes Haarmaß auf $H$ ist. 
+    Insbesondere schränkt sich $q^*$ also zu einer
+    Isometrie zwischen $\LL^2(K/H)$ und $\LL^2(K)$
+    ein. Sei nun $ \tau_{vw}$ ein Matrixkoeffizient.
+    Dann ist $ H \subseteq\ker( \tau_{vw})$ nach der
+    Konstruktion von $ \tau$. Somit erhalten wir durch
+    die universelle Eigenschaft der Faktorgruppe 
+    \cite[Satz 2.6]{algebra} eine Abbildung $ \overline{ 
+    \tau_{vw}}$, sodass $ \overline{ \tau_{vw}} \circ q 
+    = \tau_{vw}$ gilt. Damit sind alle Matrixkoeffizienten
+    im Bild von $\LL^2(K/H)$.\\
+    Da Bilder abgeschlossener Menge unter Isometrien 
+    zwischen vollständigen Räumen wieder eine abgeschlossen
+    ist, folgt, dass $q^*(\LL^2(K/H))$ abgeschlossen in
+    $\LL^2(K)$ ist. Da auch alle Matrixkoeffizienten 
+    enthalten sind, muss $\im(q^*) = \LL^2(K)$ gelten.
+    Falls $H\neq \{ 1 \} $, folgt aus dem Lemma von 
+    Urysohn, dass es eine nicht-konstante Funktion $f$
+    auf $ H$ in $ \LL^2(K)$ gibt. Da $\im(q^*) = \LL^2(K)$,
+    folgt, dass $f \in \im(q^*)$. Jedoch gilt für eine
+    Funktion $ g \in \im(q^*)$, dass $g$ konstant auf $H$
+    ist, denn für $ (g'\circ q)(h) = g'(H) = (g'\circ q)
+    (h')$ mit $h, h' \in H$, wenn $ g' \circ q = g$. Dies
+    ist ein Widerspruch und somit $H= \{ 1 \} $.
+    Damit trennen die Matrixkoeffizienten Punkte.
 \end{enumerate}
 Somit folgt aus dem Satz \ref{thm:stoneWeierstrass}, dass
 die Matrixkoeffizienten dicht in $C(K)$ sind.
