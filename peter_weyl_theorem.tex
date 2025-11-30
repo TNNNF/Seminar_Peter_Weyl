@@ -1315,7 +1315,7 @@ beschäftigt, die klassische Fourieranalysis zu
 verallgemeinern, wollen wir am Ende dieser Arbeit wieder
 einige Rückschlüsse, für die konkrete Fourieranalysis 
 festhalten, die uns der Satz von Peter-Weyl ermöglicht.
-\begin{satz}
+\begin{satz}\label{thm:fourierSeriesConverges}
 Sei $ f \in \LL^2(\mathbb S^1)$. Dann konvergiert die 
 Fourierreihe von $ f$ gegen $ f$ in der $\LL^2$-Topologie.
 Darüberhinaus kann jede stetige Funktion $f:\mathbb S^1\to
@@ -1330,11 +1330,48 @@ Sei $ f \in \LL^1(\SB^1)$. Dann definieren wir die
 \underline{Fourrierkoeffizienten}
 \index{Fourrierkoeffizienten} durch
 $$\hat{f}:\Z\to \C, \hat{f}(n) = 
-\int_{\SB^1} f(z) z^{-n} \,\diff t.$$
+ \frac{1}{2 \pi}\int_{\SB^1} f(z) z^{-n} \,\diff z.$$
 Die \underline{Fourierreihe}\index{Fourierreihe}
 von $f$ ist gegeben durch
 $$ \sum_{ n = - \infty}^{ \infty} \hat{f}(n) z^{n}.$$
 \end{definition}
+Bevor wir den Beweis von 
+\ref{thm:fourierSeriesConvergesInL2} führen können,
+benötigen wir noch den folgenden Satz:
+\begin{satz}\label{thm:contGroupHomsMonomials}
+Die stetigen Gruppenhomomorphismen $\chi:\SB^1\to\SB^1$
+sind genau die Funktionen $z\to z^n$ für $n\in \Z$.
+\end{satz}
+Einen Beweis dieser Aussage findet man zum Beispiel
+in \cite[Proposition 7.1.1]{firstCourseHarmAna}.
+Nun können wir obigen Satz zeigen:
+\begin{proof}
+Im letzten Vortrag wurde gezeigt, dass das 
+normierte Haarmaß auf $\SB^1$ gegeben ist durch
+$ \frac{1}{2 \pi} \diff z$, wobei $\diff z$ die
+Einschränkung des Lebesgue-Maßes auf die $\SB^1$
+bezeichnet.\\
+Da wir alles auf $\SB^1$ betrachten, entspricht
+die komplexe Konjugation dem Invertieren von 
+Elementen. Damit sehen wir direkt, dass es sich
+bei $\hat{f}(n)$ um das $\LL^2$-Skalarprodukt von
+$f$ und $z^{n}$ handelt. Wenn wir jetzt zeigen,
+dass es sich bei $z\mapsto z^n$ mit $n \in \Z$ um
+eine Orthonormalbasis von $\LL^2$ handelt, dann
+sehen wir die Aussage sofort ein. Dann handelt es
+sich nämlich um die typische Entwicklung eines
+Elements eines Hilbertraums in einer ONB (
+die Konvergenz dieser wird im Rahmen der 
+Funktionalanalysis mit Hilfe der Parsevalschen
+Ungleichung gezeigt).\\
+Nun wollen wir zeigen, dass es sich bei 
+$(z\mapsto z^n)_{n \in \Z}$ tatsächlich um
+eine ONB handelt. Dies wollen wir aus dem 
+\hyperref[thm:peterWeyl]{Satz von Peter-Weyl}
+folgern, indem wir zeigen, dass es sich bei 
+diesen Funktionen genau um die Matrixkoeffizienten
+handelt.
+\end{proof}
 \printindex
 \printbibliography
 \end{document}
