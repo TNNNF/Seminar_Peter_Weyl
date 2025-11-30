@@ -1321,9 +1321,20 @@ Fourierreihe von $ f$ gegen $ f$ in der $\LL^2$-Topologie.
 Darüberhinaus kann jede stetige Funktion $f:\mathbb S^1\to
 \C$ gleichmäßig durch trigonometrische Polynome angenähert
 werden.
-\end{satz}
-
-
+\end{satz}\label{thm:fourierSeriesConvergesInL2}
+Dazu wollen wir uns zuerst kurz an die Definition der
+Fourierreihe erinnern. Die Primärquelle dazu ist 
+\cite[Abschnitt 4.26]{papaRudin}. 
+\begin{definition}[Fourierreihe]
+Sei $ f \in \LL^1(\SB^1)$. Dann definieren wir die
+\underline{Fourrierkoeffizienten}
+\index{Fourrierkoeffizienten} durch
+$$\hat{f}:\Z\to \C, \hat{f}(n) = 
+\int_{\SB^1} f(z) z^{-n} \,\diff t.$$
+Die \underline{Fourierreihe}\index{Fourierreihe}
+von $f$ ist gegeben durch
+$$ \sum_{ n = - \infty}^{ \infty} \hat{f}(n) z^{n}.$$
+\end{definition}
 \printindex
 \printbibliography
 \end{document}
