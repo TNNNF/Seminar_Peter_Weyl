@@ -1370,7 +1370,53 @@ eine ONB handelt. Dies wollen wir aus dem
 \hyperref[thm:peterWeyl]{Satz von Peter-Weyl}
 folgern, indem wir zeigen, dass es sich bei 
 diesen Funktionen genau um die Matrixkoeffizienten
-handelt.
+handelt.\\
+Dazu sei nun im Folgenden $( \rho, V_ \rho)$ eine
+irreduzible, unitäre Darstellung. Da $ \SB^1$ abelsch
+ist, sehen wir direkt, dass es sich bei allen
+$ \rho(x)$ mit $ x \in\SB^1$ um Vertauscher handelt.
+Es gilt also $\rho( \SB^1) \subseteq \End_ { \SB^1 } 
+(V_ \rho)$. Jedoch ist $ \rho$ irreduzibel und damit 
+gilt nach dem \hyperref[lem:Schur]{Lemma von Schur}, 
+dass $\rho(\SB^1) \subseteq \C \id_{ V_ \rho}$. Für
+alle $ x \in \SB^1$ gibt es also ein $ \alpha(x) 
+\in \C$, sodass $ \rho(x) = \alpha(x)\id_ {V_\rho}$.
+Da $ \rho$ unitär ist, gilt sogar für alle $x \in 
+\SB^1$, dass $ \alpha(x)^{-1} = \rho( x^{-1})1 =
+\rho(x)^*1 = \overline{ \alpha(x)}$, wobei
+im vorletzten Schritt Lemma 
+\ref{lem:unitaryReprMapsInversesToAdjoints}
+verwendet wurde. Damit ist
+$ \alpha: \SB^1 \to \SB^1$ eine wohldefinierte
+Abbildung. Wir wollen zunächst zeigen, dass es
+sich bei $ \alpha$ um einen stetigen 
+Gruppenhomomorphismus handelt. Die Stetigkeit
+erhalten wir direkt daraus, dass die Abbildung
+$ x \mapsto \rho(x) 1$ stetig ist, da $ \rho$
+eine Darstellung ist. Zudem sehen wir, dass
+diese Abbildung gleich $ x\mapsto \alpha(x)$ 
+ist und somit ist $ \alpha$ stetig. Für die
+Gruppenhomomorphismus-Eigenschaft sehen wir,
+dass $ \alpha(xy) = \rho(xy)1 = \rho(x) 
+\rho(y)1 = \rho(x)( \alpha(y)) = \alpha(x) 
+\alpha(y)$ gilt. Somit handelt es sich bei
+$ \alpha$ um einen stetigen Gruppenhomomorphismus
+von $ \SB^1$ nach $ \SB^1$. Damit können wir den
+Satz \ref{thm:contGroupHomsMonomials} verwenden,
+um zu folgern, dass $ \alpha(x) = x^n$ für ein
+$ n \in \Z$ ist. Damit folgt, dass $ \rho_{11}(x)=
+\langle \rho(x)1, 1 \rangle = \alpha(x)$ der
+zugehörige Matrixkoeffizient ist.\\
+Umgekehrt erhalten wir für jeden stetigen 
+Gruppenhomomorphismus $ \alpha:\SB^1\to \SB^1$
+eine irreduzible, unitäre Darstellung $(\rho_ \alpha, 
+\C)$ gegeben durch $ \rho_ \alpha(x)(z) = \alpha(x) z$
+für $ z \in \C$ und $ x \in \SB^1$, welche offensichtlich
+den Matrixkoeffizienten $ \alpha(x)$ hat.\\
+Somit sind alle Matrixkoeffizienten von der Form 
+$ z\mapsto z^n$ für $ n \in \Z$ und mit dem
+\hyperref{thm:peterWeyl}{Satz von Peter-Weyl} folgt, dass
+es sich dabei tatsächlich um eine ONB handelt.
 \end{proof}
 \printindex
 \printbibliography
