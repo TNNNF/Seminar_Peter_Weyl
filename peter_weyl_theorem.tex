@@ -44,17 +44,55 @@ Stellen greifen wir auf \cite{reprCompLieGroups} zurück.
         invertierbaren Abbildungen.
     \item Für zwei Banachräume $V, W$ bezeichnen wir mit
         $ \mathcal L(V, W)$ die Menge der beschränkten,
-        stetigen linearen Abbildungen $T:V\to W$.
+        stetigen linearen Abbildungen $T\colon V\to W$.
     \item Für einen Maßraum $( \Omega, \mathcal{A}, \mu)$
 	    bezeichnen wir mit $\LL^2( \Omega)$ den
 	    üblichen Raum der quadratintegrierbaren
-	    Funktionen $f: \Omega\to \C$. Auf diesem
+	    Funktionen $f\colon \Omega\to \C$. Auf diesem
 	    ist das übliche Skalarprodukt gegeben.
 	    Dieses wird mit $ \langle \cdot, 
 	    \cdot \rangle_{\LL^2}$ notiert.
 \end{itemize}
 \chapter{Grundlagen}
 \section{Haarsche Integrationstheorie}
+Sei in diesem Kapitel stets $G$ eine lokalkompakte, topologische
+Gruppe mit zugehörigem Haarmaß $ \mu$. Dann gelten folgende
+Eigenschaften:
+\begin{satz}[Eigenschaften des Haarmaßes]
+    \label{thm:propsHaarMeasure}
+In obiger Situation gelten die folgenden Eigenschaften:
+\begin{enumerate}
+    \item Sei $U$ eine nichtleere, offene Menge. Dann gilt
+        $ \mu(U)>0$.
+    \item Sei $f$ eine stetige Funktion mit $f \geq 0$ und
+        $ \int_{G} f(x)  \,\diff \mu(x) =0 $. Dann gilt
+        $ f = 0$.
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}
+    \item Sei $U\neq \emptyset$ offen. Dann sind die Mengen
+        $xU$ jeweils offen für alle $ x \in G$ und überdecken
+        die gesamte Gruppe $G$. Insbesondere überdecken
+        sie also alle kompakten Mengen endlich. Da $ \mu$
+        ein Haarmaß, also insbesondere translationsinvariant
+        ist, folgt, dass $ \mu(xU) = 0$ für alle $x \in G$.
+        Somit folgt, dass alle kompakten Mengen durch
+        obige endliche Überdeckung der $xU$ ebenfalls
+        Maß $0$ haben. Da $ \mu$ ein Radonmaß ist, folgt, dass
+        $ \mu = 0$, was ein Widerspruch dazu ist, dass $ \mu$
+        ein Haarmaß ist. Somit ist $ \mu(U)> 0$.
+    \item Sei $f$ eine solche Funktion. Dann betrachten wir
+        $ U\coloneq f^{-1}(0, \infty)$. Da $f \geq 0$ und $f$ 
+        stetig ist, muss direkt folgen, dass $ U = \emptyset$. 
+        Denn wenn $ \mu(U) >0 $ gelten würde, müsste durch die
+        Stetigkeit auf $f$ das Integral größer 0 sein. Das
+        führt zum Widerspruch zur Annahme. Somit $ \mu(U)=0$
+        und damit $ f = 0$ nach der vorherigen Aussage.
+\end{enumerate}
+
+\end{proof}
+
 \section{Funktionalanylsis}
 \chapter{Darstellungstheorie}
 Ziel der Darstellungstheorie ist es gewissermaßen, das 
@@ -75,7 +113,7 @@ Eine \underline{Banachraum-Darstellung}
 \index{Banachraum-Darstellung}\footnote{Häufig werden wir 
 nur Darstellung sagen und damit eine Banachraum-Darstellung 
 meinen.} von $G$ auf $V$ ist ein Gruppenhomomorphismus 
-$ \pi: G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
+$ \pi\colon G\to \GLS{V}$, sodass die Abbildung $$G\times V\to V,
 (g,v)\mapsto (g,v)\mapsto \pi(g)v$$ stetig ist.
 \end{definition}
 \begin{beispiel}[Linksreguläre Darstellung]
@@ -84,8 +122,8 @@ Jede lokalkompakte Gruppe $G$ wirkt auf dem Hilbertraum
 ihrer quadratintegrierbaren Funktionen $ \LL^2(G)$ mit
 der sogenannten \underline{linksregulären Wirkung}
 \index{linksreguläre Wirkung}, welche durch 
-$$ \rho_L: G\to \GLS{\LL^2(G)}, x\mapsto L_x$$
-gegeben wird mit $ L_x: \LL^2(G)\to \LL^2(G), \phi 
+$$ \rho_L\colon G\to \GLS{\LL^2(G)}, x\mapsto L_x$$
+gegeben wird mit $ L_x\colon \LL^2(G)\to \LL^2(G), \phi 
 \mapsto \phi \circ l_{ x^{-1}}$, wobei $l_x$ die 
 Linksmultiplikation mit einem Element $x$ bezeichnet.
 \end{beispiel}
@@ -150,7 +188,7 @@ Darstellungen, die wie üblich über Abbildungen gegeben sind.
     Seien $( \rho, V_ \rho), ( \pi, V_ \pi)$ zwei
     Darstellungen von $G$.
     \begin{enumerate}
-        \item Ein stetiger, linearer Operator $T: V_ \rho 
+        \item Ein stetiger, linearer Operator $T\colon V_ \rho 
             \to V_ \pi$ heißt \underline{$G$-Homomorphismus}
             \index{$G$-Homomorphismus}, falls
             $$ T \circ \rho(g) = \pi(g) \circ T$$
@@ -161,7 +199,7 @@ Darstellungen, die wie üblich über Abbildungen gegeben sind.
         \item Falls $ \rho$ und $ \pi$ unitäre Darstellungen
             sind, heißen diese \underline{unitär äquivalent}
             \index{unitär äquivalent}, falls es einen
-            unitären $G$-\\Homomorphismus $T: V_ \rho\to 
+            unitären $G$-\\Homomorphismus $T\colon V_ \rho\to 
             V_ \pi$ gibt.
     \end{enumerate}
 \end{definition}
@@ -206,7 +244,7 @@ $$\langle x, T^*y \rangle = 0.$$
 Da die gewählten Elemente beliebig waren, folgt $Tx \in 
 L^\perp$ und somit ist $L^\perp$ ein $A$-invarianter,
 abgeschlossener Untervektorraum. Dann betrachten wir
-die orthogonale Projektion auf $L$ $P_L: H\to L$. Aus
+die orthogonale Projektion auf $L$ $P_L\colon H\to L$. Aus
 obiger Rechnung sehen wir direkt mittels $H = L\oplus 
 L^\perp$, dass diese mit allen $T \in A$ kommutiert.
 Unter Ausnutzung von (2) erhalten wir also, dass 
@@ -290,7 +328,7 @@ irreduziblen Darstellungen.
 \begin{korollar}\label{cor:HomSpaceOneDimensional}
 Seien $( \rho, V_ \rho), ( \pi, V_ \pi)$ zwei irreduzible,
 unitäre Darstellungen. Dann gilt für einen $G$-
-Homomorphismus $T: V_ \rho\to V_ \pi$, dass $T=0$ oder dass
+Homomorphismus $T\colon V_ \rho\to V_ \pi$, dass $T=0$ oder dass
 $T$ invertierbar mit stetiger Umkehrabbildung ist. In diesem
 Fall existiert ein $c>0$, sodass $ cT$ unitär ist. Dies
 zeigt insbesondere, dass $\Hom_G(V_ \rho, V_ \pi) = \{ 0 \}$
@@ -298,8 +336,8 @@ gilt, außer $ \rho$ und $ \pi$ sind unitär äquivalent.
 In diesem Fall ist $\dim(\Hom_G( V_ \rho, V_ \pi)) = 1$-
 \end{korollar}
 \begin{proof}
-Sei $T: V_ \rho \to V_ \pi$ ein $G$-Homomorphismus. 
-Betrachte $T^*: V_ \pi \to V_ \rho$. Diese Abbildung ist
+Sei $T\colon V_ \rho \to V_ \pi$ ein $G$-Homomorphismus. 
+Betrachte $T^*\colon V_ \pi \to V_ \rho$. Diese Abbildung ist
 ebenfalls ein $G$-Homomorphismus wie folgende Rechnung
 zeigt:
 \begin{align*}
@@ -323,7 +361,7 @@ Abbildung, folgt $ \lambda >0$. Betrachte $c =
 \sqrt{ \lambda^{-1}}$. Dann ist $(cT)^*(cT) = \id$. 
 Zusätzlich folgt analog, dass $T T^*$ bijektiv ist. Damit
 muss $cT$ bijektiv sein und somit auch unitär.\\
-Für je zwei $G$-Homomorphismen $S,T: V_ \rho\to V_ \pi$ mit
+Für je zwei $G$-Homomorphismen $S,T\colon V_ \rho\to V_ \pi$ mit
 $T\neq 0$ folgt also, dass $S \circ T^{-1} \in \Hom_G(V_ 
 \pi, V_ \pi)$. Somit $S \circ T^{-1} = \lambda \id$ für
 ein $ \lambda \in\C$. Somit $S = \lambda T$. Dies zeigt
@@ -355,7 +393,7 @@ Dazu brauchen wir einige Hilfsmittel.
     ebenfalls um ein Haarmaß handelt. Somit gibt es durch
     die Eindeutigkeit des Haarmaßes eine Zahl $\Delta(x)>0$,
     mit $ \mu_x = \Delta(x) \mu$. Dies definiert eine 
-    Abbildung $ \Delta: G\to \R_{>0}$, welche die
+    Abbildung $ \Delta\colon G\to \R_{>0}$, welche die
     \underline{modulare Funktion}\index{modulare Funktion}
     der Gruppe $G$ genannt wird.\\
     Wenn $ \Delta \equiv 1$, dann heißt $G$ eine
@@ -370,7 +408,7 @@ Damit wir uns keine Gedanken über das Maß machen müssen,
 wollen wir zeigen, dass kompakte Gruppen unimodular sind.
 \begin{satz}\label{thm:propsModularFunction}
 Sei $G$ eine lokalkompakte Gruppe mit modularer Funktion
-$ \Delta: G\to \R^\times_{>0}$. Dann gelten folgende 
+$ \Delta\colon G\to \R^\times_{>0}$. Dann gelten folgende 
 Eigenschaften:
 \begin{enumerate}
     \item Für $ y \in G$ und $ f \in \LL^1(G)$ ist
@@ -378,7 +416,7 @@ Eigenschaften:
         $$ \int_{G} R_y f(x) \,\diff x = \int_{G} f(xy) 
         \,\diff x = \Delta( y^{-1}) \int_{G} f(x) 
         \,\diff x,$$
-        wobei $R_yf: G\to \R, x \mapsto f(xy)$.
+        wobei $R_yf\colon G\to \R, x \mapsto f(xy)$.
     \item $ \Delta$ ist ein stetiger Gruppenhomomorphismus.
     \item Kompakte Gruppen sind unimodular.
 \end{enumerate}
@@ -442,7 +480,7 @@ ist, dann ist dieses Skalarprodukt eindeutig bis auf
 eine positive Konstante bestimmt.
 \end{lemma}
 \begin{proof}
-Wir wählen ein beliebiges Skalarprodukt $( \cdot, \cdot): 
+Wir wählen ein beliebiges Skalarprodukt $( \cdot, \cdot)\colon
 V\times V\to \C$. Dann definieren wir ein neues 
 Skalarprodukt durch den Ausdruck
 $$ \langle v, w \rangle \coloneq \int_{K} (
@@ -465,7 +503,7 @@ definiert:
         \tau(k)v)  \,\diff k.$$
         Die Abbbildung $ k \mapsto (\tau(k)v, 
         \tau(k)v) $ ist stetig und somit können
-        wir obiges Korollar aus der Maßtheorie %TODO 
+        wir obigen Satz \ref{thm:propsHaarMeasure}
         verwenden und erhalten, dass $ k \mapsto ( \tau(k)v
         , \tau(k)v)$ gleich der Nullabbildung ist. 
         Insbesondere gilt also für $k = 1_G$, dass
@@ -483,9 +521,9 @@ bezüglich diesen Skalarprodukts ist. Dazu sehen wir, dass
     &= \int_{K} ( \tau(k)v, \tau(k)w) \,\diff k\\
     &= \langle v,w \rangle, 
 \end{align*}
-da die Gruppe $K$ unimodular ist und es sich mit $f:
+da die Gruppe $K$ unimodular ist und es sich mit $f\colon
 K\to \C, k\mapsto ( \tau(k)v, \tau(k)w)$ bei
-$R_x f : K\to \C$ genau um $k \mapsto ( \tau(kx)v, 
+$R_x f \colon K\to \C$ genau um $k \mapsto ( \tau(kx)v, 
 \tau(kx)w)$ handelt und wir somit 
 Satz \ref{thm:propsModularFunction} anwenden können. Was
 noch zu zeigen ist, ist die Eindeutigkeit bis auf 
@@ -495,7 +533,7 @@ die sich nur im unitären Skalarprodukt auf $V$
 unterscheiden. Bezeichne diese Skalarprodukte mit 
 $ \langle \cdot, \cdot \rangle_1$ und 
 $ \langle \cdot,\cdot \rangle_2$. Betrachte nun die
-lineare Abbildung $\id:V_1\to V_2, v\mapsto v$. Da
+lineare Abbildung $\id\colon V_1\to V_2, v\mapsto v$. Da
 $V_1$ und $V_2$ endlichdimensional ist, ist $\id$ 
 stetig und ein $G$-Homomorphismus zwischen $ \rho_1$
 und $\rho_2$. Nun nutzen wir Korollar
@@ -623,7 +661,7 @@ die Abbildung
 $$ K\to V, k \mapsto \tau(k)v$$
 stetig. Da Skalarprodukte auf Hilberträumen stets stetig
 sind, folgt, dass die Abbildung 
-$$ \varphi: K\to \C, k \mapsto \langle \tau(k)v, w 
+$$ \varphi\colon K\to \C, k \mapsto \langle \tau(k)v, w 
 \rangle $$
 stetig, da eine Komposition stetiger Abbildungen ist.
 \end{proof}
@@ -636,7 +674,7 @@ $\UDualFin{K}$ sowie eine Orthonormalbasis $e_1, \dots, e_n$
 jedes $ V_ \tau$.\\
 Dann führen wir folgende Notation ein, um die nachfolgenden
 Sätze ein wenig angenehmer aufschreiben zu können:
-$$ \tau_{ij}: K \to \C, k\mapsto \langle \tau(k)e_i, e_j 
+$$ \tau_{ij}\colon K \to \C, k\mapsto \langle \tau(k)e_i, e_j 
 \rangle.$$
 Also meinen wir damit den Matrikoeffizienten von $k$
 an der Stelle $(i, j)$. 
@@ -664,9 +702,9 @@ Nun beweisen wir den obigen Satz
 \begin{enumerate}
     \item Seien $ \tau \neq \rho $ Repräsentanten aus 
         $\UDualFin{K}$.\\
-        Dann betrachte eine lineare Abbildung $ T: V_ \tau 
-        \to V_ \rho$ und definiere dafür die Abbildung
-        $S_T: V_ \tau\to V_ \rho$ durch 
+        Dann betrachte eine lineare Abbildung $ T\colon 
+        V_ \tau \to V_ \rho$ und definiere dafür die 
+        Abbildung $S_T\colon V_ \tau\to V_ \rho$ durch 
         $$S_T = \int_{K} \rho( k^{-1}) T \tau(k) \,
         \diff k.$$
         Wir bezeichnen $S_T$ ab jetzt nur noch mit $S$.
@@ -964,7 +1002,7 @@ für alle $U \in \mathcal{U}$ gilt.
     \overline{F_2( x^{-1})}$. Diese Funktion ist 
     offensichtlich stetig. Zudem rechnet man schnell nach,
     dass $F \in \orthoComp{M}, F(e)>0$ und $F= F^*$.\\
-    Nun betrachten wir $T:\LL^2(K)\to \LL^2(K), f\mapsto 
+    Nun betrachten wir $T\colon\LL^2(K)\to \LL^2(K), f\mapsto 
     f\ast F$. Man rechnet schnell unter Ausnutzen des
     Satzes von Fubini nach, dass $T$ selbstadjungiert
     ist, da $F(x) = \overline{F( x^{-1})}$ gilt. Zudem 
@@ -1044,7 +1082,7 @@ Dabei spielen die treuen Darstellungen eine besondere
 Rolle:
 \begin{definition}[treue Darstellung]
     Eine Darstellung auf einer topologischen Gruppe $G$
-    $ \rho: G\to \GLS{V}$ und einem Vektorraum $V$
+    $ \rho\colon G\to \GLS{V}$ und einem Vektorraum $V$
     heißt \underline{treu}\index{treue Darstellung},
     falls injektiv ist.
 \end{definition}
@@ -1085,7 +1123,7 @@ Darstellungen Gedanken machen müssen:
 \begin{definition}[Tensorprodukte von Darstellungen]
 Seien $( \rho, V), ( \tau, W)$ endlichdimensionale
 Darstellungen einer kompakten Gruppe $K$. Dann
-erhalten wir mittels $\rho\otimes \tau: K\to 
+erhalten wir mittels $\rho\otimes \tau\colon K\to 
 V\times W$ gegeben durch
 $$ (\rho \otimes \tau)(k)(v, w) = \rho(k)(v) \otimes 
 \tau(k)(w)$$
@@ -1164,7 +1202,7 @@ die übrigen Anforderungen prüfen:
 	folgt aus Skalarmultiplikation. Dazu wählen
 	wir als Darstellung den Vektorraum $\C$
 	und die triviale Darstellung, also
-	$$ \rho: K\to \GLS{\C}, k\mapsto \id_\C.$$
+	$$ \rho\colon K\to \GLS{\C}, k\mapsto \id_\C.$$
 	Da $\C$ eindimensional ist, erhalten wir
 	die Irreduzibilität sofort. Des Weiteren
 	gilt
@@ -1190,9 +1228,9 @@ die übrigen Anforderungen prüfen:
     dass 
     es im Fall von topologischen Gruppen $K$ genügt, 
     dass es für alle $x \in K$ eine stetige 
-    Funktion $f:K\to \C$, sodass $f(x)\neq f(1)$.\\
+    Funktion $f\colonK\to \C$, sodass $f(x)\neq f(1)$.\\
     Um dies zu sehen, seien $x_1 \neq x_2$. Dann gibt es
-    nach Annahme eine stetige Funktion $f: K\to \C$,
+    nach Annahme eine stetige Funktion $f\colon K\to \C$,
     sodass $f( x_1^{-1} x_2) \neq f(1) $.  Dann ist
     insbesondere die Abbildung $ L_ { x_1 } f $ als 
     Verkettung stetiger Abbildungen stetig und es gilt:
@@ -1223,7 +1261,7 @@ die übrigen Anforderungen prüfen:
     f(xh)  \,\diff h  \,\diff x$$
     für jedes $ f \in \LL^1(K)$.\\
     Damit können wir folgern, dass die Quotientenabbildung
-    $q^*: \LL^1(G/H) \to \LL^1(G), f\mapsto f\circ q$ 
+    $q^*\colon \LL^1(G/H) \to \LL^1(G), f\mapsto f\circ q$ 
     eine Isometrie ist. Denn für $ f \in \LL^1(G/H)$
     gilt mit obiger Formel:
     \begin{align*}
@@ -1288,7 +1326,7 @@ Damit können wir jetzt jedoch Satz
 \ref{thm:compLieGrpsHaveFaithfulRepr} beweisen:
 \begin{proof}
 Sei $ k \in K \setminus \{ 1\} $. Dann gibt es nach dem
-Lemma von Urysohn eine stetige Funktion $f:G\to \R$
+Lemma von Urysohn eine stetige Funktion $f\colon G\to \R$
 mit $f(k) \neq f(1)$. Aus dem Korollar 
 \ref{cor:matrixCoeffsDenseInC} folgt die Existenz eines
 Matrixkoeffizienten $ \tau_{1,vw}$ mit $ \tau_{1,vw}$ mit
@@ -1298,7 +1336,7 @@ echte, abgeschlossene Untergruppe von $ K$. Falls
 $ K_1 = \{ 1 \} $, dann ist $ \tau_1$ die gesuchte 
 Darstellung.\\
 Ansonsten wähle $ g \in K_1\setminus \{ 1\} $ und eine
-stetige Funktion $f: K\to \R$, sodass $f(k)\neq f(1)$
+stetige Funktion $f\colon K\to \R$, sodass $f(k)\neq f(1)$
 (wieder mit Urysohn) sowie die zugehörige Darstellung
 $ \tau_{2}$ mit $ K_2 \coloneq \ker( \tau_2)$. Dann
 ist $ K_1 \cap K_2 \subsetneq K_1$, da $ \tau_2(g)\neq 
@@ -1318,9 +1356,9 @@ festhalten, die uns der Satz von Peter-Weyl ermöglicht.
 \begin{satz}\label{thm:fourierSeriesConverges}
 Sei $ f \in \LL^2(\mathbb S^1)$. Dann konvergiert die 
 Fourierreihe von $ f$ gegen $ f$ in der $\LL^2$-Topologie.
-Darüberhinaus kann jede stetige Funktion $f:\mathbb S^1\to
-\C$ gleichmäßig durch trigonometrische Polynome angenähert
-werden.
+Darüberhinaus kann jede stetige Funktion $f\colon\mathbb 
+S^1\to \C$ gleichmäßig durch trigonometrische Polynome 
+angenähert werden.
 \end{satz}\label{thm:fourierSeriesConvergesInL2}
 Dazu wollen wir uns zuerst kurz an die Definition der
 Fourierreihe erinnern. Die Primärquelle dazu ist 
@@ -1329,7 +1367,7 @@ Fourierreihe erinnern. Die Primärquelle dazu ist
 Sei $ f \in \LL^1(\SB^1)$. Dann definieren wir die
 \underline{Fourrierkoeffizienten}
 \index{Fourrierkoeffizienten} durch
-$$\hat{f}:\Z\to \C, \hat{f}(n) = 
+$$\hat{f}\colon\Z\to \C, \hat{f}(n) = 
  \frac{1}{2 \pi}\int_{\SB^1} f(z) z^{-n} \,\diff z.$$
 Die \underline{Fourierreihe}\index{Fourierreihe}
 von $f$ ist gegeben durch
@@ -1339,7 +1377,7 @@ Bevor wir den Beweis von
 \ref{thm:fourierSeriesConvergesInL2} führen können,
 benötigen wir noch den folgenden Satz:
 \begin{satz}\label{thm:contGroupHomsMonomials}
-Die stetigen Gruppenhomomorphismen $\chi:\SB^1\to\SB^1$
+Die stetigen Gruppenhomomorphismen $\chi\colon\SB^1\to\SB^1$
 sind genau die Funktionen $z\to z^n$ für $n\in \Z$.
 \end{satz}
 Einen Beweis dieser Aussage findet man zum Beispiel
@@ -1387,7 +1425,7 @@ Da $ \rho$ unitär ist, gilt sogar für alle $x \in
 im vorletzten Schritt Lemma 
 \ref{lem:unitaryReprMapsInversesToAdjoints}
 verwendet wurde. Damit ist
-$ \alpha: \SB^1 \to \SB^1$ eine wohldefinierte
+$ \alpha\colon \SB^1 \to \SB^1$ eine wohldefinierte
 Abbildung. Wir wollen zunächst zeigen, dass es
 sich bei $ \alpha$ um einen stetigen 
 Gruppenhomomorphismus handelt. Die Stetigkeit
@@ -1408,7 +1446,7 @@ $ n \in \Z$ ist. Damit folgt, dass $ \rho_{11}(x)=
 \langle \rho(x)1, 1 \rangle = \alpha(x)$ der
 zugehörige Matrixkoeffizient ist.\\
 Umgekehrt erhalten wir für jeden stetigen 
-Gruppenhomomorphismus $ \alpha:\SB^1\to \SB^1$
+Gruppenhomomorphismus $ \alpha\colon\SB^1\to \SB^1$
 eine irreduzible, unitäre Darstellung $(\rho_ \alpha, 
 \C)$ gegeben durch $ \rho_ \alpha(x)(z) = \alpha(x) z$
 für $ z \in \C$ und $ x \in \SB^1$, welche offensichtlich
