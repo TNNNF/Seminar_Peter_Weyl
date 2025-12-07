@@ -52,8 +52,17 @@ Stellen greifen wir auf \cite{reprCompLieGroups} zurück.
 	    ist das übliche Skalarprodukt gegeben.
 	    Dieses wird mit $ \langle \cdot, 
 	    \cdot \rangle_{\LL^2}$ notiert.
+    \item Für einen topologischen Raum $X$ bezeichnen wir
+        mit $C_0(X)$ die Menge der im Unendlichen
+        verschwindenden, stetigen Funktionen.
 \end{itemize}
 \chapter{Grundlagen}
+Dieses Kapitel dient lediglich als Zusammenfassung der 
+wichtigsten Ergebnisse der Funktionalanalysis und Haarschen
+Integrationstheorie, die in diesem Vortrag benötigt werden.
+Da diese jedoch nicht das Hauptaugenmerk dieses Vortrags
+sein sollen, wird teils auf Beweise (unter Angabe der 
+entsprechenden Literatur) verzichtet.
 \section{Haarsche Integrationstheorie}
 Sei in diesem Kapitel stets $G$ eine lokalkompakte, topologische
 Gruppe mit zugehörigem Haarmaß $ \mu$. Dann gelten folgende
@@ -90,9 +99,65 @@ In obiger Situation gelten die folgenden Eigenschaften:
         führt zum Widerspruch zur Annahme. Somit $ \mu(U)=0$
         und damit $ f = 0$ nach der vorherigen Aussage.
 \end{enumerate}
-
 \end{proof}
-
+Neben dem Haarmaß ist auch die Faltung ein wichtiges Werkzeug
+in der harmonischen Analysis. 
+\begin{definition}[Faltung]
+Seien $f,g \in \LL^1(G)$. Dann definieren wir die
+\underline{Faltung}\index{Faltung} von $f$ und $g$ als
+die folgende Funktion:
+$$ f\ast g(x) = \int_{G} f(y) g( y^{-1}x)  \,\diff y.$$
+\end{definition}
+Für dieses wollen wir die folgenden Eigenschaften ohne Beweis
+festhalten. Beweise können beispielsweise \cite[Abschnitt
+2.5]{abstractHarmAna} entnommen werden.
+\begin{satz}\label{thm:propsConvolution}
+\begin{enumerate}
+    \item Die Faltung existiert für fast alle $x \in G$.
+    \item Es gilt $||f \ast g||_1 \leq ||f||_1 ||g||_1$.
+        Damit folgt, dass $ f \ast g \in \LL^1(G)$.
+    \item Wenn $ f \in \LL^1(G), g \in \LL^ \infty(G)$, dann
+        ist $ f \ast g$ stetig.
+\end{enumerate}
+\end{satz}
+\begin{bemerkung}
+Insbesondere erhalten wir aus der letzten Aussage von
+\ref{thm:propsConvolution}, dass für $f \in \LL^1(G)$
+und $ g \in C_0(G)$ auch $ f \ast g$ stetig ist, da
+$ C_0(G) \subseteq \LL^\infty(G)$, da alle Funktionen,
+die im Unendlichen verschwinden, beschränkt sind.
+\end{bemerkung}
+Zusätzlich benötigen wir den Begriff eines Dirac-Netzes.
+\begin{definition}[Dirac-Funktionen, Dirac-Netz]
+Auf einer lokalkompakten, topologischen Gruppe $G$ heißt eine
+Funktion $ \phi \in C_c(G)$ eine \underline{Dirac-Funktion}
+\index{Dirac-Funktion}, falls
+\begin{itemize}
+	\item $ \phi \geq 0$,
+	\item $ \int_{G} \phi(x) \,\diff x =1  $,
+	\item $ \phi( x^{-1}) = \phi(x)$.
+\end{itemize}
+Sei $\mathcal U$ die Menge aller offenen Umgebungen der $1_G$.
+Dann heißt eine Familie von Dirac-Funktionen $( \phi_U)_ 
+{ U \in \mathcal U  } $ ein \underline{Dirac-Netz}
+\index{Dirac-Netz}, falls $ \supp{ \phi_U} \subseteq U$
+für alle $U \in \mathcal{U}$ gilt.
+\end{definition}
+Auch für Dirac-Netze wollen wir die wichtigsten Eigenschaften
+festhalten. 
+\begin{satz}\label{thm:propsDiracNet}
+\begin{enumerate}
+    \item Es gibt stets ein Dirac-Netz für $G$.
+    \item Sei $f \in \LL^2(G)$ und $ ( \phi_U)_U$ ein Dirac-Netz.
+        Dann konvergiert $ f\ast \phi_U$ gegen $f$ in der 
+        $\LL^2$-Topologie.
+\end{enumerate}
+\end{satz}
+Die erste Aussage folgt aus dem Lemma von Urysohn. Die zweite Aussage
+wird in \cite[Lemma 1.6.6]{principlesHarmAna} für $\LL^1$ bewiesen.
+Für $\LL^2$ können wir dies analog unter Ausnutzung der 
+Dreiecksungleichung für das Bochner-Integral definieren. Diese wird
+beispielsweise in \cite{harmAnaBanachSpaces} bewiesen.
 \section{Funktionalanylsis}
 \chapter{Darstellungstheorie}
 Ziel der Darstellungstheorie ist es gewissermaßen, das 
@@ -418,7 +483,10 @@ Eigenschaften:
         \,\diff x,$$
         wobei $R_yf\colon G\to \R, x \mapsto f(xy)$.
     \item $ \Delta$ ist ein stetiger Gruppenhomomorphismus.
-    \item Kompakte Gruppen sind unimodular.
+    \item Für jede integrierbare Funktion $f$ gilt 
+        $$ \int_{G} f( x^{-1}) \Delta( x^{-1})  \,\diff x
+        = \int_{G} f(x) \,\diff x.$$
+    \item Kompakte Gruppen sind unimodular. 
 \end{enumerate}
 \end{satz}
 \begin{proof}
@@ -458,11 +526,50 @@ Eigenschaften:
             f(x) \,\diff  x.$$
             Dieser Ausdruck ist stetig in $y$, weswegen auch
             $ \Delta$ stetig in $y$ sein muss.
+        \item Sei $f \in C_c(G)$. Wir betrachten die
+            Abbildung $$ I(f) = \int_{G} 
+            f( x^{-1}) \Delta( x^{-1})\,\diff x.$$
+            Dann gilt nach der ersten Eigenschaft, dass
+            \begin{align*}
+                I( L_z f) 
+                &= \int_{G} f( z^{-1} x^{-1}) 
+            \Delta( x^{-1})  \,\diff x\\
+                &= \int_{G} f( (xz)^{-1}) \Delta( x^{-1}) 
+                \,\diff x\\
+                &= \Delta( z^{-1}) \int_{G} f( x^{-1})
+                 \Delta( (x z^{-1})^{-1}\,\diff x\\
+                &= \int_{G} f( x^{-1}) \Delta( x^{-1})  
+                \,\diff x\\
+                &= I(f)
+            \end{align*}
+            für alle $z \in G$, wobei im vorletzten Schritt
+            verwendet wurde, dass $ \Delta$ ein
+            Gruppenhomomorphismus ist. Damit ist $I$
+            ein invariantes Integral. Somit gibt es ein
+            $ c> 0$ mit $I(f) = c\int_{G} f(x) \,\diff x.$
+            Wir wollen zeigen, dass $ c = 1$. Sei also
+            $ \varepsilon >0$ und wähle eine symmetrische
+            Umgebung der 1 $V$ (also $V = V^{-1}$) mit
+            $|1- \Delta(s)|< \varepsilon$ (durch Stetigkeit
+            von $ \Delta$) für alle $ s \in V$. Wähle
+            eine symmetrische Funktion $f \in C_c^+(V)$
+            mit $f \neq 0$. Dann gilt:
+            \begin{align*}
+            |1-c| \int_{G} f(x) \,\diff x
+            &= \left| \int_{G} f(x) \,\diff - I(f)\right|\\
+            &\leq \int_{G} |f(x)-f(x^{-1})\Delta( x^{-1})|
+            \,\diff x\\
+            &= \int_{V} f(x)|1- \Delta( x^{-1})|\,\diff x\\
+            &< \varepsilon \int_{G} f(x) \,\diff x.
+            \end{align*}
+            Da $ f\neq 0$, folgt $|1-c|<\varepsilon$ für 
+            alle $\varepsilon >0$. Damit folgt $c=1$ und
+            somit folgt die Aussage.
         \item Sei nun $G$ kompakt. Da $ \Delta$ ein
             stetiger Gruppenhomomorphismus ist, muss
             $ \Delta(G)$ eine kompakte Untergruppe von
             $ \R_{>0}^\times$ sein. Die einzige kompakte
-            Untergruppe dieser Gruppe ist jedoch $ \{ 1 \}$.
+            Untergruppe dieser Gruppe ist jedoch $\{ 1 \}$.
     \end{enumerate} 
 \end{proof}
 Dass wir nicht zwischen linken und rechten Haarmaßen
@@ -836,13 +943,12 @@ Nun beweisen wir den obigen Satz
             &= \int_{K} \overline{\tau_{ji}(k^{-1})} 
             \tau_{ji}( k^{-1})\,\diff k \\
             &= \int_{K} \overline{ \tau_{ji}( k)}
-            \tau_{ji}( k)\,\diff k\\ %TODO: den Pushforward
-            % der Inversionsabbildung aufschreiben und hier
-            % sauber referenzieren
+            \tau_{ji}( k)\,\diff k\\
             &= \langle \tau_{ji},\tau_{ji} \rangle_{\LL^2}\\
             &= \lambda_i
         \end{align*}
-        wobei im vorletzten Schritt Satz ?? %TODO: hier referenz einbauen
+        wobei im vorletzten Schritt Satz 
+        \ref{thm:propsModularFunction}
         verwendet wurde. Somit muss es sich stets um den
         gleichen Wert bei allen $ \lambda_j$ handeln.
         Diesen nennen wir $ \lambda$. Wir müssen jetzt 
@@ -873,23 +979,6 @@ nachgehen, wenn wir den Satz von Peter-Weyl beweisen werden.
 In diesem Abschnitt werden wir mehrere Sätze beweisen,
 die unter dem Satz von Peter-Weyl bekannt sind. Dazu benötigen
 wir jedoch noch ein wenig Vorarbeit:
-\begin{definition}[Dirac-Funktionen, Dirac-Netz]
-Auf einer lokalkompakten, topologischen Gruppe $G$ heißt eine
-Funktion $ \phi \in C_c(G)$ eine \underline{Dirac-Funktion}
-\index{Dirac-Funktion}, falls
-\begin{itemize}
-	\item $ \phi \geq 0$,
-	\item $ \int_{G} \phi(x) \,\diff x =1  $,
-	\item $ \phi( x^{-1}) = \phi(x)$.
-\end{itemize}
-Sei $\mathcal U$ die Menge aller offenen Umgebungen der $1_G$.
-Dann heißt eine Familie von Dirac-Funktionen $( \phi_U)_ 
-{ U \in \mathcal U  } $ ein \underline{Dirac-Netz}
-\index{Dirac-Netz}, falls $ \supp{ \phi_U} \subseteq U$
-für alle $U \in \mathcal{U}$ gilt.
-\end{definition}
-% TODO: Faltung und Faltung glättet L²-Funktionen zu C-
-% Funktionen
 \begin{satz}[Peter-Weyl I]\label{thm:peterWeyl}
     Sei $K$ eine kompakte, topologische Gruppe sowie 
     $ \tau$ Repräsentanten der Äquivalenzklassen aus 
@@ -938,7 +1027,7 @@ für alle $U \in \mathcal{U}$ gilt.
 	abgeschlossen unter Translationen ist, und $ \phi_U
 	\in C_c(K)$ für alle $U \in \mathcal{U}$ folgt 
 	direkt, dass $ \phi_U \ast H \in \orthoComp{M}$.
-	Da die Faltung Funktionen glättet und es ein $U \in
+    Mit Satz \ref{thm:propsConvolution} und, da es ein $U \in
 	\mathcal{U}$ geben muss mit $ \phi_U \ast H \neq 0$
 	(sonst wäre $H$ durch die $\LL^2$-Konvergenz bereits
 	die Nullfunktion), folgt die Behauptung.\\
@@ -1228,7 +1317,7 @@ die übrigen Anforderungen prüfen:
     dass 
     es im Fall von topologischen Gruppen $K$ genügt, 
     dass es für alle $x \in K$ eine stetige 
-    Funktion $f\colonK\to \C$, sodass $f(x)\neq f(1)$.\\
+    Funktion $f\colon K\to \C$, sodass $f(x)\neq f(1)$.\\
     Um dies zu sehen, seien $x_1 \neq x_2$. Dann gibt es
     nach Annahme eine stetige Funktion $f\colon K\to \C$,
     sodass $f( x_1^{-1} x_2) \neq f(1) $.  Dann ist
@@ -1453,16 +1542,17 @@ für $ z \in \C$ und $ x \in \SB^1$, welche offensichtlich
 den Matrixkoeffizienten $ \alpha(x)$ hat.\\
 Somit sind alle Matrixkoeffizienten von der Form 
 $ z\mapsto z^n$ für $ n \in \Z$ und mit dem
-\hyperref{thm:peterWeyl}{Satz von Peter-Weyl} folgt, dass
+\hyperref[thm:peterWeyl]{Satz von Peter-Weyl} folgt, dass
 es sich dabei tatsächlich um eine ONB handelt.\\
 Wir wissen aus Korollar \ref{cor:matrixCoeffsDenseInC},
 dass die Matrixkoeffizienten dicht in $C(\SB^1)$ sind.
 Wie oben gezeigt sind die Matrixkoeffizienten genau durch
 die trigonometrischen Polynome $z \mapsto z^n$ gegeben auf
 $\SB^1$. Da die Matrixkoeffizienten dichten Spann haben,
-folgt, dass sich jedes $ f \in C(\SB^1)$ schreiben lässt
-als $f= \sum_{k=- \infty}^{ \infty} c_k z^k$ für gewisse
-$ c_k \in \C$. Hier wird die Konvergenz im Sinne der 
+folgt, dass sich jedes $ f \in C(\SB^1)$ als Grenzwert von
+Funktionen der Form $\sum_{i=1}^{n} c_ {i } z^i$, 
+mit $c_ { n_i } \in \C$.
+Hier wird die Konvergenz im Sinne der 
 Supremumsnormkonvergenz verstanden und damit handelt es
 sich um gleichmäßige Konvergenz, was die Aussage zeigt.
 \end{proof}
