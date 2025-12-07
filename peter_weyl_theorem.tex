@@ -1630,6 +1630,49 @@ Hier wird die Konvergenz im Sinne der
 Supremumsnormkonvergenz verstanden und damit handelt es
 sich um gleichmäßige Konvergenz, was die Aussage zeigt.
 \end{proof}
+\chapter{Ausblick}
+In diesem Vortrag wurde eine Version des Satzes von
+Peter-Weyl bewiesen, welche die gängigste Formulierung
+des \hyperref[thm:peterWeyl]{Satzes von Peter-Weyl} ist. 
+Aus diesem Satz folgen jedoch noch weitere spannende 
+Ergebnisse. Aus Zeitgründen kann auf diese im Vortrag nicht
+eingegangen werden. Der Vollständigkeit sollen diese 
+dennoch erwähnt werden. Die Beweise finden sich in
+\cite{principlesHarmAna}. Zuerst wollen wir jedoch eine 
+spannende Konsequenz des \hyperref[thm:peterWeyl]
+{Satzes von Peter-Weyl} geben:
+\begin{satz}
+Sei $K$ eine kompakte, topologische Gruppe. Dann gilt
+\begin{enumerate}
+    \item $\UDual{K} = \UDualFin{K}$, also sind alle
+        irreduziblen, unitären Darstellungen 
+        endlichdimensional.
+    \item Jede unitäre Darstellung von $K$ ist die orthogonale
+        Summe von irreduziblen Darstellungen.
+\end{enumerate}
+\end{satz}
+Nun formulieren wir noch ein weiteres Ergebnis, welches
+als Satz von Peter-Weyl bezeichnet werden:
+\begin{satz}
+Es gibt einen unitären Isomorphismus
+$$ \LL^2(K) \cong \widehat{ \bigoplus}_ { \tau \in \hat K }
+\End( V_ \tau),$$
+welcher ein Vertauscher bzgl. der Darstellung $ \eta
+= \oplus_ { \tau \in \hat K } \eta_ \tau $ mit
+$ \eta_ \tau(k_1, k_2)(T) = \tau(k_1)T \tau( k_2^{-1})$
+für $k_1, k_2 \in K$ und $T \in\End(V_ \tau)$.\\
+Dieser Isomorphismus bildet ein $ f \in \LL^2(K) \subseteq
+\LL^1(K)$ auf $ \sum_{ \tau \in \hat K} \tau(f)$ ab, wobei
+$$ \tau(f) = \int_{K} f(x) \tau(x) \,\diff x.$$
+Insbesondere definieren wir für $f \in \LL^2(K)$ die
+Abbildung $ \hat f : \hat K\to \hat{ \bigoplus}
+_ { \tau \in \hat K } \End( V_ \tau)$ durch
+$ \hat f( \tau) = \tau(f)$. Für diese gilt $\norm f
+= \norm{ \hat f}$ für alle $f \in \LL^2(K)$. 
+\end{satz}
+Somit erhalten wir durch den Satz von Peter-Weyl einen
+Plancherel-Satz auf kompakten Gruppen $K$.\\
+
 \printindex
 \printbibliography
 \end{document}
