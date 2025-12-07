@@ -43,8 +43,9 @@ Stellen greifen wir auf \cite{reprCompLieGroups} zurück.
         $\GLS{V}$ die Menge der stetigen, linearen, 
         invertierbaren Abbildungen.
     \item Für zwei Banachräume $V, W$ bezeichnen wir mit
-        $ \mathcal L(V, W)$ die Menge der beschränkten,
-        stetigen linearen Abbildungen $T\colon V\to W$.
+        $ \mathscr B(V, W)$ die Menge der beschränkten,
+        stetigen linearen Abbildungen $T\colon V\to W$ und
+	mit $ \mathscr B(V) = \mathscr B(V, V)$.
     \item Für einen Maßraum $( \Omega, \mathcal{A}, \mu)$
 	    bezeichnen wir mit $\LL^2( \Omega)$ den
 	    üblichen Raum der quadratintegrierbaren
@@ -158,7 +159,82 @@ wird in \cite[Lemma 1.6.6]{principlesHarmAna} für $\LL^1$ bewiesen.
 Für $\LL^2$ können wir dies analog unter Ausnutzung der 
 Dreiecksungleichung für das Bochner-Integral definieren. Diese wird
 beispielsweise in \cite{harmAnaBanachSpaces} bewiesen.
-\section{Funktionalanylsis}
+\section{Funktionalanalysis}
+Neben der Haarschen Integrationstheorie ist ein weiteres wichtiges
+Werkzeug die Funktionalanalysis. Insbesondere die Spektraltheorie
+kompakter Operatoren wird ein wichtiges Werkzeug sein. Quelle dieses
+Abschnitts ist \cite{functionalAnalysis}.
+\subsection{Spektraltheorie kompakter Operatoren}
+\begin{definition}[Kompakte Operatoren]
+Eine lineare Abbildung $T$ zwischen normierten Räumen $X$ und
+$Y$ heißt \underline{kompakt}\index{kompakt}, wenn $T(B_X)$ 
+relativkompakt ist, d.h. $\overline{T(B_X)}$ ist kompakt. Die
+Menge der kompakten Operatoren bezeichnet man mit $K(X, Y)$
+und wir definieren $ K(X) \coloneq K(X, X)$.
+\end{definition}
+Auf einem separablen Hilbertraum $H$ kann man über eine wichtige 
+Unterklasse der kompakten Operatoren reden:
+\begin{definition}[Hilbert-Schmidt-Operatoren]
+Ein Operator $T \in K(H)$ heißt \underline{Hilbert-Schmidt-Operator}
+\index{Hilbert-Schmidt-Operator}, falls es eine Orthonormalbasis
+$(e_n)_{n \in \N}$ gibt, sodass $ \sum_{n=1}^{\infty} \norm{Tg_n}^2
+<\infty$ ist.
+\end{definition}
+Ein wichtiges Beispiel für Hilbert-Schmidt-Operatoren sind die 
+sogenannten Integraloperatoren. Sei dazu $(X, \mathcal{A}, \mu)$
+ein Maßraum.
+\begin{beispiel}\label{ex:intOperatorsAreHilbertSchmidt}
+	Eine Funktion $k \in \LL^2(X \times X)$ heißt ein 
+	$\LL^2$-Kern. Für einen solchen Kern $k$ definieren wir
+	auf $\LL^2(X)$ einen Operator
+	$$K \phi(x) \coloneq \int_{X} k(x,y) \phi(y) \,\diff y.$$
+	Diese Integral existiert fast überall in $x$ und für alle
+	$ \phi \in \LL^2(X)$ gilt $ K \phi \in \LL^2(X)$. Damit
+	erhalten wir einen Operator $K:\LL^2(X)\to \LL^2(X)$. 
+	$K$ ist ein Hilbert-Schmidt-Operator.
+\end{beispiel}
+Einen Beweis dieses Ergebnis findet man in 
+\cite[Proposition 5.3.3]{principlesHarmAna}.
+Mit das wichtigste Werkzeug im Umgang mit kompakten Operatoren
+ist der Spektralsatz für kompakte Operatoren.
+\begin{satz}[Spektralsatz für kompakte Operatoren]
+	\label{thm:spectralThm}
+Sei $T \in K(H)$ normal (falls $\K = \C$) bzw. selbstadjungiert
+(falls $\K = \R$). Dann existieren ein Orthonormalsystem
+$e_1, e_2, \dots$ sowie eine Nullfolge $( \lambda_1, \lambda_2,
+\dots) \subseteq \K \setminus \{ 0 \} $, sodass
+$$ H = \ker(T) \oplus \overline{\vspan\{ e_1, e_2,\dots \}}$$
+sowie
+$$ Tx = \sum_{k} \lambda_k \langle x,e_k \rangle e_k$$
+für alle $x \in H$.
+\end{satz}
+\subsection{Stetiger Funktionalkalkül}
+\begin{satz}\label{thm:contFunctionalCalculus}
+	Sei $ T \in \mathscr{B}(H)$ selbstadjungiert auf einem 
+	Hilbertraum $H$. Dann existiert genau eine Abbildung
+	$ \Phi: C( \sigma(T)) \to \mathscr{B}(H)$ mit
+	\begin{enumerate}
+		\item $ \Phi( \id) = T, \Phi( \mathbf{1}) = \id$,
+		\item $ \Phi$ ist linear,
+		\item $ \Phi$ ist multiplikativ, d.h.
+			$ \Phi(f\cdot g) = \Phi(f)\circ \Phi(g)$
+		\item $ \Phi$ ist involutiv, d.h. $ \Phi(\overline f)
+			= \Phi(f)^*$,
+		\item $ \Phi$ ist stetig.
+	\end{enumerate}
+	$ \Phi$ heißt der \underline{stetige Funktionalkalkül}
+	\index{stetige Funktionalkalkül} von $T$ und wir schreiben
+	$f(T) = \Phi(f)$ für $ f \in C( \sigma(T))$.
+\end{satz}
+Eine besondere Eigenschaft des Funktionalkalküls bezieht sich auf die
+Situation, in der der Operator $T$, mit einem weiteren Operator
+$S$ kommutiert. Dann gilt nämlich:
+\begin{satz}\label{thm:funcCalcCommutes}
+	Seien $T, S \in \mathscr{B}(H)$ mit $S \circ T = T \circ S$.
+	Dann gilt für alle $ f \in C( \sigma(T))$, dass
+	$f(T) \circ S = S \circ f(T)$.
+\end{satz}
+Diese Aussage findet man in \cite[Theorem 3]{specThmFromScratch}.
 \chapter{Darstellungstheorie}
 Ziel der Darstellungstheorie ist es gewissermaßen, das 
 Problem der schwierigen Strukturierung von Gruppen zu
@@ -285,13 +361,13 @@ topologischen Gruppe $G$. Dann sind äquivalent:
 Für den Beweis dieses Lemma brauchen wir noch ein wenig 
 Vorarbeit aus der Funktionalanalysis:
 \begin{lemma}\label{lem:topologicalSchur}
-Sei $H$ ein Hilbertraum und $A \subseteq \mathcal L(H)$ eine
+Sei $H$ ein Hilbertraum und $A \subseteq \mathscr B(H)$ eine
 Menge beschränkter Operatoren auf $H$, sodass für alle $S 
 \in A$ auch $S^* \in A$ gilt. Dann sind äquivalent:
 \begin{enumerate}
     \item Die einzige $A$-invariante, abgeschlossene Menge
         ungleich $ \{ 0 \} $ ist $ H$.
-    \item Falls $T \in \mathcal L(H)$ mit allen $S \in A$
+    \item Falls $T \in \mathscr B(H)$ mit allen $S \in A$
         kommutiert, dann ist $T = \lambda \id_V$ für
         ein $ \lambda \in \C$.
 \end{enumerate}
@@ -315,7 +391,7 @@ L^\perp$, dass diese mit allen $T \in A$ kommutiert.
 Unter Ausnutzung von (2) erhalten wir also, dass 
 $P_L = \id$ (da Projektionen Operatornorm 1 haben) gilt.
 Somit muss $L= H$ gelten.\\
-Angeommen (1) gilt. Sei also $T \in \mathcal L(H)$ ein 
+Angeommen (1) gilt. Sei also $T \in \mathscr B(H)$ ein 
 Operator, der mit $A$ kommutiert. Dann kommutiert auch $T^*$
 mit $A$, denn für $S \in A$ ist $S^* \in A$ ud somit
 \begin{align*}
@@ -1099,15 +1175,13 @@ wir jedoch noch ein wenig Vorarbeit:
     $$ T(f)(x) = \int_{K} f(y) F( y^{-1}x) \,\diff y.$$
     Also handelt es sich bei $T$ um einen Integraloperator
     mit stetigem Kern $ (x,y)\mapsto F( y^{-1}x)$. 
-    %TODO: Integraloperatoren sind Hilbert-Schmidt-Operatoren
-    %TODO: Hilbert-Schmidt-Operatoren sind kompakt
-    Aus ??? folgt, dass es sich bei $T = T^* \neq 0$ (nicht 0,
+    Aus Beispiel \ref{ex:intOperatorsAreHilbertSchmidt} folgt, 
+    dass es sich bei $T = T^* \neq 0$ (nicht 0,
     da $F$ stetig ist und an einer Stelle nicht verschwindet)
     um einen Hilbert-Schmidt-Operator, insbesondere also um 
     einen kompakten Operator handelt.\\
-    %TODO: Spektralsatz für kompakte Operatoren + Referenz
-    Aus dem Spektralsatz für kompakte, selbstadjungierte
-    Operatoren folgt die Existenz eines Eigenwerts 
+    Aus dem \hyperref[thm:spectralThm]{Spektralsatz für kompakte 
+    Operatoren} folgt die Existenz eines Eigenwerts 
     $ \lambda\neq 0$, für welchen der zugehörige Eigenraum
     $V_ \lambda$. Dieser Eigenraum ist abgeschlossen unter
     Linksverschiebung $L_k$ für alle $k \in K$, denn es
